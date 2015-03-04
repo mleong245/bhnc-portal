@@ -9,11 +9,17 @@
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
-/db/test.sqlite3-journal
+/db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
+/log
 /tmp
 
 # Ignore C9 files
 .c9/
+
+# Ignore Rubymine
+/.idea
+
+#MacOS
+.DS_Store
