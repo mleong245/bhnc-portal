@@ -5,7 +5,7 @@ Feature: Edit volunteer profile
   so that it accurately reflects my personal preferences
 
 Background:
-   Given I am an authenticated volunteer
+   Given I am an authenticated volunteer with email "foo@gmail.com" and password "12345678"
    And I am on the edit profile page
 
 Scenario: Edit name
