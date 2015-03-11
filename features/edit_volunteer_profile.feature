@@ -38,10 +38,10 @@ Scenario: Confirmation password doesn't match
     Then I should be on the users page
     And I should see "Password confirmation doesn't match"
     
-Scenario: Blank field
-    When I fill in "user_first_name" with ""
+Scenario: Blank fields don't change the user's profile
+    When I fill in "user_last_name" with "asdf"
     And I fill in "user_current_password" with "12345678"
     And I press "Update"
-    Then I should be on the users page
-    And I should see "First name can't be blank"
+    Then I should be on the landing page
+    And I should see "Your account has been updated successfully"
     
