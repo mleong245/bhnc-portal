@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'user#show'
   devise_for :users
   resources :users
+  get '/user/event_detail/:id', to: 'events#event_detail', as: 'event_detail'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

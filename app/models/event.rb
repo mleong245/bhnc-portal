@@ -1,5 +1,6 @@
-class Events < ActiveRecord::Base
+class Event < ActiveRecord::Base
 
-    params.require(:event).permit(:Event_name, :Event_date, :Event_Description)
 end
 
+#rails g scaffold name alekfn:string
+#rails
