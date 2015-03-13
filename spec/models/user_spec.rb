@@ -1,5 +1,8 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "should not allow a blank email" do
+    user = User.new({:first_name => 'foo', :last_name => 'bar', :password => '12345678'})
+    expect(user.save).to be_false
+  end
 end
