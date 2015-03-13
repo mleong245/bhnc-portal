@@ -10,6 +10,9 @@ class EventsController < ApplicationController
     @events = Event.find params[:id]
   end
 
+  def event_volunteer
+    @events = Event.find params[:id]
+  end
 #event_detail
 #render 'user/show'
 #render 'meh'
