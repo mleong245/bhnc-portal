@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'user#show'
   devise_for :users
-  resources :users
+  resources :user
   get '/user/event_detail/:id', to: 'events#event_detail', as: 'event_detail'
   post '/user/event_detail/:id', to: 'events#event_volunteer', as: 'event_volunteer'
 
