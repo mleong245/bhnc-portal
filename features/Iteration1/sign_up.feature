@@ -4,28 +4,28 @@ Feature: Sign up for the BHNC Website
   I would like to create a BHNC account
   So that I can view their webpage
 
-Background: Given I am on the sign up page
-
 Scenario: Successful sign up (Happy Path)
-  When I give my information as the following: Volunteer, email@gmail.com, 12345678, 12345678
-  And I press 'Sign up'
-  Then I should be on the confirmation page
-  And I should see 'Welcome Volunteer!'
+  Given I am on the sign_up page
+  When I give my information as the following: Rick, Pence, email@gmail.com, 12345678, 12345678
+  And I press "Sign up"
+  Then I should be on the landing page
 
 Scenario: Too short of password (Sad Path)
-  When I give my information as the following: Volunteer, email@gmail.com, 123, 123
-  And I press 'Sign up'
-  Then I should be on the sign up page
-  And I should see 'Password must be 8 or more characters'
+  Given I am on the sign_up page
+  When I give my information as the following: Rick, Pence, email@gmail.com, 123, 123
+  And I press "Sign up"
+  Then I should be on the users page
+  And I should see "Password is too short (minimum is 8 characters)"
 
 Scenario: Passwords do not match (Sad Path)
-  When I give my information as the following: Volunteer, email@gmail.com, 12345678, 12435678
-  And I press 'Sign Up'
-  Then I should be on the sign up page
-  And I should see 'Confirmation Password does not match'
+  Given I am on the sign_up page
+  When I give my information as the following: Rick, Pence, email@gmail.com, 12345678, 12435678
+  And I press "Sign up"
+  Then I should be on the users page
+  And I should see "Password confirmation doesn't match Password"
 
 Scenario: Invalid Email (Sad Path)
-  When I give my information as the following: Volunteer, email, 12345678, 12345678
-  And I press 'Sign up'
-  Then I should be on the sign up page
-  And I should see 'Invalid email'
+  Given I am on the sign_up page
+  When I give my information as the following: Rick, Pence, email, 12345678, 12345678
+  And I press "Sign up"
+  Then I should be on the users page
