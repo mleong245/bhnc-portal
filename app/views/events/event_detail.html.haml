@@ -1,0 +1,15 @@
+-# in app/views/events/event_detail
+%h2 Details about #{@events.name}
+
+%ul#details
+  %li
+    Date:
+    = @events.date
+
+%h3 Description
+
+%p#descrption= @events.full_description
+
+=button_to 'Register To Voluteer', event_detail_path
+
+/=link_to 'Back to home page', root_path
