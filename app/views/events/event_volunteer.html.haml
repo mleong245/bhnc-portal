@@ -1,0 +1,17 @@
+-# in app/views/events/event_volunteer
+%h2 Details about #{@events.name}
+
+%ul#details
+  %li
+    Sign Up Info:
+    = @events.name
+
+%h3 Time
+
+%p#descrption= @events.full_description
+
+=button_to 'Submit', root_path, :method => :get, :confirm => 'Successful Volunteer Registration'
+
+/=button_to 'Register To Volunteer', event_detail_path
+
+/=link_to 'Back to home page', root_path
