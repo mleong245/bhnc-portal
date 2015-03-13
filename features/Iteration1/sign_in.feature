@@ -7,33 +7,32 @@ Feature: BHNC User sign in
 Background: users have been added to the database
 
   Given the following users exist:
-  | name           | email            | password |
-  | Volunteer1     | email1@gmail.com | 12345678 |
-  | Volunteer2     | email2@gmail.com | 23456789 |
-  | Volunteer3     | email3@gmail.com | 34567890 |
+  | first_name | last_name | email            | password | password_confirmation |
+  | Rick       | Pence     | email1@gmail.com | 12345678 | 12345678              |
+  | Jim        | Manning   | email2@gmail.com | 23456789 | 23456789              |
+  | Bob        | Wayne     | email3@gmail.com | 34567890 | 34567890              |
 
-  And I am on the sign in page
+  Given I am on the sign_in page
 
 Scenario: Successful User sign in (Happy Path)
   When I give my log in information as the following: email1@gmail.com, 12345678
-  And I press 'Sign in'
-  Then I should be on the user landing page
-  And I should see 'Welcome Volunteer1'
+  And I press "Log in"
+  Then I should be on the landing page
 
 Scenario: Invalid email (Sad Path)
   When I give my log in information as the following: email2, 12345678
-  And I press 'Sign in'
-  Then I should be on the sign in page
-  And I should see 'Invalid Email'
+  And I press "Log in"
+  Then I should be on the sign_in page
+  And I should see "Invalid email or password"
 
 Scenario: Email not a user (Sad Path)
   When I give my log in information as the following: email@gmail.com, 12345678
-  And I press 'Sign in'
-  Then I should be on the sign in page
-  And I should see 'This Email has not been registered'
+  And I press "Log in"
+  Then I should be on the sign_in page
+  And I should see "Invalid email or password"
 
 Scenario: Invalid password (Sad Path)
   When I give my log in information as the following: email2@gmail.com, 12345678
-  And I press 'Sign in'
-  Then I should be on the sign in page
-  And I should see 'Invalid Password'
+  And I press "Log in"
+  Then I should be on the sign_in page
+  And I should see "Invalid email or password"
