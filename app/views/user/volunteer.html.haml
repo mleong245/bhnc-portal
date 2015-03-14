@@ -5,18 +5,18 @@
 = form_tag user_volunteer_path do
 
   = label :volunteer, :street_address, 'Street Address'
-  = text_field :volunteer, 'street_address'
+  = text_field :volunteer, 'street_address', :required => true
 
   = label :volunteer, :city, 'City'
-  = text_field :volunteer, 'city'
+  = text_field :volunteer, 'city', :required => true
 
   = label :volunteer, :zip_code, 'Zip Code'
-  = text_field :volunteer, 'zip_code'
+  = text_field :volunteer, 'zip_code', :required => true
 
   = label :volunteer, :phone_number, 'Phone Number'
-  = text_field :volunteer, 'phone_number'
+  = text_field :volunteer, 'phone_number', :required => true
 
   = label :volunteer, :company, 'Company'
-  = text_field :volunteer, 'company'
+  = text_field :volunteer, 'company', :required => true
 
   = submit_tag 'Sign Up'
