@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'devise'
 gem 'rake'
+gem 'rails_admin'
+
 
 gem "codeclimate-test-reporter", group: :test, require: nil
 
