@@ -15,4 +15,6 @@
         %td= event.description
         %td= link_to "More about #{event.name}", event_detail_path(event)
 
+=link_to "Volunteer Sign Up", user_new_volunteer_path
+
 =link_to "Sign out", destroy_user_session_path, :method => :delete
