@@ -4,52 +4,26 @@ Feature: Create volunteer events
   I would like to be able to create a new event
   so that I can better organize the logistics of the volunteers, and so that volunteers can view the new event
 
-Background: Want to create a new event
+Background:
+  Given I am signed in as admin
+  And I am on the create new event page
 
-Scenario: Go to the new events page when signed in as Admin from home page
-  Given I am signed in as Admin
-  When I press "add new event"
-  Then I should be on the add new event page
+Scenario: Create event (Happy Path)
+  Given I try to create new event "Event 1" at "location 1" on "March 30th, 2015" from "8:00am" to "2:00PM"
+  Then I should be on the admin dashboard page
+  And I should see that the event was successfully created.
 
-Scenario: Add a new event from the add new event page
-  Given I am signed in as Admin
-  Given I am on the new event page
-  And I fill in "Event name" with "Happy"
-  And I fill in "Event date" with "A date"
-  And I fill in "Event information" with "Info"
-  And then I press "create new event"
-  Then I should be on the home page
-  And I should see ""Happy" has been added as a new event"
+Scenario: Create event with no name (Sad Path)
+  Given I try to create new event "" at "location 1" on "March 30th, 2015" from "8:00am" to "2:00PM"
+  Then I should be on the create new event page
+  And I should see that the event was not successfully created.
 
-Scenario: Trying to add a new event with no date
-  Given I am signed in as Admin
-  Given I am on the new event page
-  And I fill in "Event name" with "Happy"
-  And I fill in "Event information" with "Info"
-  And then I press "create new event"
-  Then I should see "No proper date set for the event"
+Scenario: Create event without date (Sad Path)
+  Given I try to create new event "Event 1" at "location 1" on "" from "8:00am" to "2:00PM"
+  Then I should be on the create new event page
+  And I should see that the event was not successfully created.
 
-Scenario: Add a new event with no name
-  Given I am signed in as Admin
-  Given I am on the new event page
-  And I fill in "Event date" with "A date"
-  And I fill in "Event information" with "Info"
-  And then I press "create new event"
-  Then I should see "There is no Name for the event"
-
-Scenario: Trying to add a new event with no Information
-  Given I am signed in as Admin
-  Given I am on the new event page
-  And I fill in "Event name" with "Happy"
-  And I fill in "Event date" with "A date"
-  And then I press "create new event"
-  Then I should see "There is no Information for the Event"
-
-Scenario: Trying to add an invalid date
-  Given I am signed in as Admin
-  Given I am on the new event page
-  And I fill in "Event name" with "Happy"
-  And I fill in "Event date" with "A date"
-  And I fill in "Event information" with "Info"
-  And then I press "create new event"
-  Then I should see "Invalid date"
+Scenario: Create event without times (Sad Path)
+  Given I try to create new event "Event 1" at "location 1" on "March 30th, 2015" from "" to ""
+  Then I should be on the create new event page
+  And I should see that the event was not successfully created.
