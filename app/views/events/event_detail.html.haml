@@ -19,5 +19,7 @@
     =button_to 'Register To Volunteer', event_volunteer_path
   - else
     =button_to 'Unregister from Volunteering', event_unvolunteer_path
+- else
+  =link_to "Volunteer Sign Up", user_new_volunteer_path
 
 /=link_to 'Back to home page', root_path

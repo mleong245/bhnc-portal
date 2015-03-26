@@ -1,7 +1,6 @@
 -# This file is app/views/user/show.html.haml
 %h1 Welcome to the BHNC Website
 
--if current_user.volunteer or current_user.admin
-  = render 'shared/upcoming_events'
+= render 'shared/upcoming_events'
 
 =link_to "Volunteer Sign Up", user_new_volunteer_path
