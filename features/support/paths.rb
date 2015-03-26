@@ -23,6 +23,9 @@ module NavigationHelpers
     when /^the admin events page/ then '/admin/event'
     when /^the admin landing page/ then '/admin'
 
+    #CHANGE THIS FOR VOLUNTEER AVAILABLE HOURS
+    when /^the edit hours page/ then '/'
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
