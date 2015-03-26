@@ -66,4 +66,5 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14.0'
   gem 'simplecov'
   gem 'database_cleaner'
+  gem 'timecop'
 end

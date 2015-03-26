@@ -1,0 +1,16 @@
+%h3 Upcoming Events
+%table{:class => "table table-condensed table-hover"}
+  %thead
+    %th Name
+    %th Date
+    %th Time
+    %th Location
+    %th More Information
+  %tbody
+    - @events.each do |event|
+      %tr{:class => ("info" if current_user.events.include?(event))}
+        %td= event.name
+        %td= event.date
+        %td= event.time
+        %td= event.location
+        %td= link_to "More about #{event.name}", event_detail_path(event)
