@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :space_rental_requests
+
   devise_for :users
   resources :users
   root 'user#show'
