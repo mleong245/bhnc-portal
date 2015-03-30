@@ -23,7 +23,7 @@ describe SpaceRentalRequestsController do
   # This should return the minimal set of attributes required to create a valid
   # SpaceRentalRequest. As you add validations to SpaceRentalRequest, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) { { "location" => "MyString" } }
+  let(:valid_attributes) { { "location" => "MyString", "start" => DateTime.new(2015, 1, 1), "end" => DateTime.new(2015, 1, 2)} }
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in

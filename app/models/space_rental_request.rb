@@ -8,4 +8,23 @@ class SpaceRentalRequest < ActiveRecord::Base
   def self.allLocations
     return ['Location1', 'Location2', 'Location3']
   end
+
+  def approved?
+    self.approved
+  end
+
+  def has_conflict
+    SpaceRentalRequest.where(:approved => true).find_each do |request|
+      if self.location == request.location && (overlaps_with(request.start) || overlaps_with(request.end))
+        return true
+      end
+    end
+    return false
+  end
+
+  private
+
+  def overlaps_with(time)
+    return time > self.start && time < self.end
+  end
 end

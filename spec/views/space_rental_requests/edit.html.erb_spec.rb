@@ -12,7 +12,7 @@ describe "space_rental_requests/edit" do
 
     # Run the generator again with the --webrat flag if you want to use webrat matchers
     assert_select "form[action=?][method=?]", space_rental_request_path(@space_rental_request), "post" do
-      assert_select "input#space_rental_request_location[name=?]", "space_rental_request[location]"
+      assert_select "select#space_rental_request_location[name=?]", "space_rental_request[location]"
     end
   end
 end
