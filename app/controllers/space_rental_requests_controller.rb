@@ -31,7 +31,7 @@ class SpaceRentalRequestsController < ApplicationController
         format.html { render :new }
         format.json { render json: @space_rental_request.errors, status: :unprocessable_entity }
       else
-        format.html { redirect_to @space_rental_request, notice: 'Space rental request was successfully submitted' }
+        format.html { redirect_to @space_rental_request, notice: 'Space rental request was successfully submitted. An email will be sent to you if the request is approved.' }
         format.json { render :show, status: :created, location: @space_rental_request }
       end
     end

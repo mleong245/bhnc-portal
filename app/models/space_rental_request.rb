@@ -14,9 +14,9 @@ class SpaceRentalRequest < ActiveRecord::Base
   end
 
   def has_conflict
-    SpaceRentalRequest.where(:approved => true).find_each do |request|
-      if self.location == request.location && (overlaps_with(request.start) || overlaps_with(request.end))
-        self.errors.add(:base, 'Request conflicts with an existing approved request')
+    SpaceRentalRequest.where(:approved => true, :location => self.location).find_each do |request|
+      if overlaps_with(request.start) || overlaps_with(request.end)
+        self.errors.add(:base, "#{self.location} is reserved at that time")
         return true
       end
     end
@@ -26,6 +26,6 @@ class SpaceRentalRequest < ActiveRecord::Base
   private
 
   def overlaps_with(time)
-    return time > self.start && time < self.end
+    return time >= self.start && time <= self.end
   end
 end
