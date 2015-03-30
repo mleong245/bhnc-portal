@@ -16,6 +16,7 @@ class SpaceRentalRequest < ActiveRecord::Base
   def has_conflict
     SpaceRentalRequest.where(:approved => true).find_each do |request|
       if self.location == request.location && (overlaps_with(request.start) || overlaps_with(request.end))
+        self.errors.add(:base, 'Request conflicts with an existing approved request')
         return true
       end
     end

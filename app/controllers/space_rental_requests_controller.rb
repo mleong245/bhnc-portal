@@ -25,14 +25,14 @@ class SpaceRentalRequestsController < ApplicationController
   # POST /space_rental_requests.json
   def create
     @space_rental_request = SpaceRentalRequest.new(space_rental_request_params)
-
+    @space_rental_request.user = current_user
     respond_to do |format|
-      if @space_rental_request.save
-        format.html { redirect_to @space_rental_request, notice: 'Space rental request was successfully submitted' }
-        format.json { render :show, status: :created, location: @space_rental_request }
-      else
+      if @space_rental_request.has_conflict || !@space_rental_request.save
         format.html { render :new }
         format.json { render json: @space_rental_request.errors, status: :unprocessable_entity }
+      else
+        format.html { redirect_to @space_rental_request, notice: 'Space rental request was successfully submitted' }
+        format.json { render :show, status: :created, location: @space_rental_request }
       end
     end
   end
