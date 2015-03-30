@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
-  resources :space_rental_requests
 
-  devise_for :users
-  resources :users
+  resources :space_rental_requests
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'user#show'
+  devise_for :users
+  resources :user
+  get '/user/event_detail/:id', to: 'events#event_detail', as: 'event_detail'
+  post '/user/event_detail/:id', to: 'events#event_volunteer', as: 'event_volunteer'
+  get '/volunteer/', to: 'user#volunteer', as: 'user_new_volunteer'
+  post '/volunteer/', to: 'user#newVolunteer', as: 'user_volunteer'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

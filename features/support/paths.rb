@@ -18,6 +18,7 @@ module NavigationHelpers
     when /^the users page$/ then user_registration_path
     when /^the landing page$/ then '/'
     when /^the edit profile page/ then edit_user_registration_path
+    when /^the volunteer sign up page/ then user_new_volunteer_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
