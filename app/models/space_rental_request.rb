@@ -3,6 +3,7 @@ class SpaceRentalRequest < ActiveRecord::Base
   validates_presence_of :location
   validates_presence_of :start
   validates_presence_of :end
+  validate :start_time_must_be_earlier_than_end_time
 
   # Update later once we get list of spaces to rent
   def self.allLocations
@@ -21,6 +22,12 @@ class SpaceRentalRequest < ActiveRecord::Base
       end
     end
     return false
+  end
+
+  def start_time_must_be_earlier_than_end_time
+    if self.end < self.start
+      self.errors.add(:base, 'Request start time is after end time.')
+    end
   end
 
   private

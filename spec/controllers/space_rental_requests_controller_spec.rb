@@ -30,6 +30,11 @@ describe SpaceRentalRequestsController do
   # SpaceRentalRequestsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) do
+    @user = User.create(:email => 'foo@gmail.com', :password => '12345678')
+    sign_in :user, @user
+  end
+
   describe "GET index" do
     it "assigns all space_rental_requests as @space_rental_requests" do
       space_rental_request = SpaceRentalRequest.create! valid_attributes

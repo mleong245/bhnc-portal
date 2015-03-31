@@ -25,4 +25,8 @@ describe SpaceRentalRequest do
     new_request = SpaceRentalRequest.new(:location => 'something_else', :start => DateTime.new(2015, 1, 1, 1), :end => DateTime.new(2015, 1, 3))
     expect(new_request.has_conflict).to be_false
   end
+  it 'should not have the start time come before the end time' do
+    request = SpaceRentalRequest.new(:location => 'something', :start => DateTime.new(2015, 1, 1), :end => DateTime.new(2014, 1, 1))
+    expect(request.valid?).to be_false
+  end
 end
