@@ -9,15 +9,20 @@ class UserController < ApplicationController
 
   def newVolunteer
   	@user = current_user
-    @user.update(volunteer_params)
-  	flash[:notice] = "Successfully signed up!"
-  	redirect_to '/'
+    @valid = @user.update(volunteer_params)
+    if @valid
+  	   flash[:notice] = "Successfully signed up!"
+       redirect_to '/'
+     else
+       flash[:alert] = "Please check the format of your address and phone number"
+      redirect_to user_new_volunteer_path
+    end
   end
 
   private
   def volunteer_params
     params.require(:volunteer).permit(:street_address, :city, :zip_code,
-                                      :phone_number, :company)
+                                      :phone, :company)
   end
 
 end

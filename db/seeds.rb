@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
-User.create({:email => 'admin@gmail.com', :password => 'bhncadmin', :admin => true})
+User.create({:first_name => "First", :last_name => "Last", :email => 'admin@gmail.com', :password => 'bhncadmin', :admin => true})
 
 events = [{:name => 'Yo', :date => '25-Nov-1992', :description => 'hmmm', :full_description => 'yati yati ya'},]
 

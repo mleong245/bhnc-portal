@@ -34,6 +34,7 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
+gem 'validates_formatting_of'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
