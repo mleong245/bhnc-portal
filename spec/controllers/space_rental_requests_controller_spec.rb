@@ -87,6 +87,13 @@ describe SpaceRentalRequestsController do
     end
 
     describe "with invalid params" do
+      it 'does not not save a space_rental_request with a conflict' do
+        SpaceRentalRequest.any_instance.stub(:has_conflict).and_return(true)
+        expect{
+          post :create, {:space_rental_request => valid_attributes}, valid_session
+        }.to change(SpaceRentalRequest, :count).by(0)
+      end
+      
       it "assigns a newly created but unsaved space_rental_request as @space_rental_request" do
         # Trigger the behavior that occurs when invalid params are submitted
         SpaceRentalRequest.any_instance.stub(:save).and_return(false)
