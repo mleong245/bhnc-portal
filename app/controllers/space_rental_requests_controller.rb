@@ -65,7 +65,7 @@ class SpaceRentalRequestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def space_rental_request_params
-      params.require(:space_rental_request).permit(:location, :start, :end)
+      params.require(:space_rental_request).permit(:location, :start, :end, :description)
     end
     
     def show_success(format, status_message, notice_message)
