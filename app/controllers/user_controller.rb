@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   def show
-    @events = Event.all
+    @events = Event.upcoming
   end
 
   def volunteer

@@ -19,7 +19,15 @@ module NavigationHelpers
     when /^the landing page$/ then '/'
     when /^the edit profile page/ then edit_user_registration_path
     when /^the volunteer sign up page/ then user_new_volunteer_path
+    when /^the create new event page/ then '/admin/event/new'
+    when /^the admin events page/ then '/admin/event'
+    when /^the admin landing page/ then '/admin'
+
+    #CHANGE THIS FOR VOLUNTEER AVAILABLE HOURS
+    when /^the edit hours page/ then '/'
+
     when /^the space rental requests page/ then new_space_rental_request_path
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
