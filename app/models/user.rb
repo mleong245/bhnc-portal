@@ -13,6 +13,4 @@ class User < ActiveRecord::Base
   validates_formatting_of :street_address, :using => :address, :allow_blank => true
   has_many :space_rental_requests, :dependent => :nullify
 
-
->>>>>>> 88cab16b10c6dd0340ae771336f39390050eabb7
 end
