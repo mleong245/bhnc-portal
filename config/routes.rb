@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :space_rental_requests
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'user#show'
   devise_for :users

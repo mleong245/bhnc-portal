@@ -11,14 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331021445) do
+ActiveRecord::Schema.define(version: 20150402071924) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
-    t.datetime "date"
     t.string   "description"
-    t.string   "full_description"
+    t.string   "location"
+    t.datetime "start"
+    t.datetime "end"
   end
+
+  create_table "space_rental_requests", force: :cascade do |t|
+    t.string   "location"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.boolean  "approved",    default: false, null: false
+    t.integer  "user_id"
+    t.string   "description"
+  end
+
+  add_index "space_rental_requests", ["user_id"], name: "index_space_rental_requests_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                            default: "",    null: false
@@ -46,5 +60,10 @@ ActiveRecord::Schema.define(version: 20150331021445) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "users_events", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
 
 end

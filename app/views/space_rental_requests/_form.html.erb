@@ -1,0 +1,33 @@
+<%= form_for(@space_rental_request) do |f| %>
+  <% if @space_rental_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@space_rental_request.errors.count, "error") %> prohibited this space_rental_request from being saved:</h2>
+
+      <ul>
+      <% @space_rental_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.select :location, SpaceRentalRequest.allLocations %>
+  </div>
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.datetime_select :start, :ampm => true%>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.datetime_select :end, :ampm => true%>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

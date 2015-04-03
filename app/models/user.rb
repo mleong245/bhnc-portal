@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   validates_formatting_of :phone, :using => :us_phone, :allow_blank => true
   validates_formatting_of :street_address, :using => :address, :allow_blank => true
 
+  has_many :space_rental_requests, :dependent => :nullify
+
 end
