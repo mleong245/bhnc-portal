@@ -68,4 +68,5 @@ group :development, :test do
   gem 'simplecov'
   gem 'database_cleaner'
   gem 'timecop'
+  gem 'factory_girl'
 end
