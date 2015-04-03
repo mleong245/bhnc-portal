@@ -28,6 +28,7 @@ gem 'haml'
 gem 'devise'
 gem 'rake'
 gem 'rails_admin'
+gem 'cancan'
 
 
 gem "codeclimate-test-reporter", group: :test, require: nil

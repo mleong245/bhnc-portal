@@ -4,6 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_filter :authenticate_user!
+  def after_sign_in_path_for(resource_or_scope)
+    if current_user.admin
+        rails_admin_path
+    else
+        root_path
+    end
+  end
+
   def after_sign_out_path_for(resource_or_scope)
     user_session_path #root_path
   end
