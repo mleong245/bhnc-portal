@@ -11,6 +11,5 @@ class User < ActiveRecord::Base
   validates_formatting_of :phone, :using => :us_phone, :allow_blank => true
   validates_formatting_of :street_address, :using => :address, :allow_blank => true
   has_and_belongs_to_many :events,  join_table: 'users_events'
-
-
+  
 end

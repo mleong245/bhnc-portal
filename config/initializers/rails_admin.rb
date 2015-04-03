@@ -1,4 +1,9 @@
 RailsAdmin.config do |config|
+  config.authorize_with :cancan
+  config.current_user_method { current_user }
+end
+
+RailsAdmin.config do |config|
   config.model 'Event' do
     edit do
       field :name do
