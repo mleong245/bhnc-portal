@@ -29,5 +29,5 @@ Scenario: Create event without date (Sad Path)
   When I try to create new event "Event 1" at "location 1" on "" from "" to ""
   Then I should be on the create new event page
   And I should see "Event failed to be created"
-  And I should see "Start can't be blank"
+  And I should see "Starts at can't be blank"
   And I should see "End can't be blank"
