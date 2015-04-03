@@ -29,6 +29,10 @@ gem 'devise'
 gem 'rake'
 gem 'rails_admin'
 
+gem "watu_table_builder", :require => "table_builder"
+gem "simple_calendar", "~> 1.1.0"
+gem 'bootstrap_calendar_rails'
+
 
 gem "codeclimate-test-reporter", group: :test, require: nil
 

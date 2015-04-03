@@ -14,6 +14,10 @@ class UserController < ApplicationController
   	redirect_to '/'
   end
 
+  def myEvents
+
+  end
+
   private
   def volunteer_params
     params.require(:volunteer).permit(:street_address, :city, :zip_code,

@@ -21,4 +21,8 @@ class EventsController < ApplicationController
     flash[:notice] = "Successfully unregistered for #{@event.name}!"
     redirect_to event_detail_path
   end
+
+  def index
+    @event = Event.all
+  end
 end
