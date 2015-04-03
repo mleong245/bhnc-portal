@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20150326055819) do
 
   create_table "events", force: :cascade do |t|
@@ -41,8 +42,8 @@ ActiveRecord::Schema.define(version: 20150326055819) do
     t.string   "street_address"
     t.string   "city"
     t.integer  "zip_code"
-    t.integer  "phone_number",           limit: 8
     t.string   "company"
+    t.integer  "phone",                  limit: 8
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

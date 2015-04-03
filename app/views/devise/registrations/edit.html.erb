@@ -4,13 +4,14 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <h1><%= current_user.first_name%></h1>
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true %>
+    <%= f.text_field :first_name, autofocus: true, :value => current_user.first_name %>
   </div>
 
   <div class="field">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+    <%= f.text_field :last_name , :value => current_user.last_name%>
   </div>
 
   <div class="field">
