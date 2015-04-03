@@ -26,6 +26,9 @@ module NavigationHelpers
     #CHANGE THIS FOR VOLUNTEER AVAILABLE HOURS
     when /^the edit hours page/ then '/'
 
+    when /^the space rental requests page/ then new_space_rental_request_path
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

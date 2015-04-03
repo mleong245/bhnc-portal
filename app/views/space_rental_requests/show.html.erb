@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @space_rental_request.location %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @space_rental_request.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @space_rental_request.end %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @space_rental_request.description %>
+</p>
+
+<%= link_to 'Edit', edit_space_rental_request_path(@space_rental_request) %> |
+<%= link_to 'Back', space_rental_requests_path %>

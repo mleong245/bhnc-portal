@@ -44,4 +44,11 @@ Scenario: Blank fields don't change the user's profile
     And I press "Update"
     Then I should be on the landing page
     And I should see "Your account has been updated successfully"
+
+Scenario: Edit page reflects changes to profile
+    When I fill in "user_first_name" with "Foo"
+    And I fill in "user_current_password" with "12345678"
+    And I press "Update"
+    And I am on the edit profile page
+    Then I should see "Foo"
     
