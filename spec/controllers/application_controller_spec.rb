@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe ApplicationController do
   controller do
     def after_sign_out_path_for(resource)
@@ -6,7 +8,7 @@ describe ApplicationController do
   end
 
   before (:each) do
-    @user = FactoryGirl.create(:user)
+    @user = User.create(:first_name => "First", :last_name => "Last", :email => "email@email.com", :password => "12345678")
   end
 
   describe "After sign out" do
