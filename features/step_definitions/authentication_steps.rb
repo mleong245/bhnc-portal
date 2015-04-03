@@ -53,7 +53,7 @@ end
 When /I try to create new event "(.*)" at "(.*)" on "(.*)" from "(.*)" to "(.*)"$/ do |name, location, date, start_time, end_time|
   fill_in("event_name", :with => name)
   fill_in("event_location", :with => location)
-  fill_in("event_start", :with => date + start_time)
+  fill_in("event_starts_at", :with => date + start_time)
   fill_in("event_end", :with => date + end_time)
   click_button("Save")
 end

@@ -7,7 +7,7 @@ Feature: View future opportunities to volunteer for BHNC
 Background: events have been added to the database
 
   Given the following events exist:
-  | name          |location    | start            | end              |
+  | name          |location    | starts_at        | end              |
   | Event 1       |location 1  | 3-Mar-2015 8:00  | 3-Mar-2015 12:00 |
   | Event 2       |location 2  | 3-Mar-2015 13:00 | 3-Mar-2015 18:00 |
   | Event 3       |location 3  | 4-Mar-2015 8:00  | 4-Mar-2015 19:00 |
