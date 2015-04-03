@@ -1,6 +1,6 @@
 class UserController < ApplicationController
   def show
-    @events = Event.all
+    @events = Event.upcoming
   end
 
   def volunteer
@@ -17,6 +17,10 @@ class UserController < ApplicationController
        flash[:alert] = "Please check the format of your address and phone number"
       redirect_to user_new_volunteer_path
     end
+  end
+
+  def myEvents
+
   end
 
   private

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :user
   get '/user/event_detail/:id', to: 'events#event_detail', as: 'event_detail'
   post '/user/event_detail/:id', to: 'events#event_volunteer', as: 'event_volunteer'
+  post '/user/event/:id', to: 'events#event_unvolunteer', as: 'event_unvolunteer'
   get '/volunteer/', to: 'user#volunteer', as: 'user_new_volunteer'
   post '/volunteer/', to: 'user#newVolunteer', as: 'user_volunteer'
   # The priority is based upon order of creation: first created -> highest priority.

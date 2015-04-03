@@ -1,19 +1,28 @@
 # app/controllers/events_controller.rb
 class EventsController < ApplicationController
-  def index
-    @events = Event.all
-    p "*" * 80
-    p "swag: #{@events}"
-  end
-
   def event_detail
-    @events = Event.find params[:id]
+    @event = Event.find params[:id]
   end
 
   def event_volunteer
-    @events = Event.find params[:id]
+    @event = Event.find params[:id]
+    current_user.events << @event
+    current_user.save
+    flash[:notice] = "Successfully registered for #{@event.name}!"
+    redirect_to event_detail_path
   end
-#event_detail
-#render 'user/show'
-#render 'meh'
+
+  def event_unvolunteer
+    @event = Event.find params[:id]
+    current_user.events.delete(@event)
+    @event.users.delete(current_user)
+    current_user.save
+    @event.save
+    flash[:notice] = "Successfully unregistered for #{@event.name}!"
+    redirect_to event_detail_path
+  end
+
+  def index
+    @event = Event.all
+  end
 end
