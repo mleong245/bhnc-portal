@@ -1,15 +1,25 @@
 -# in app/views/events/event_detail
-%h2 Details about #{@events.name}
+%h2= @event.name
 
-%ul#details
-  %li
-    Date:
-    = @events.date
+%h3 Date
+%p#date= @event.date
+
+%h3 Time
+%p#time= @event.time
+
+%h3 Location
+%p#location= @event.location
 
 %h3 Description
 
-%p#descrption= @events.full_description
+%p#descrption= @event.description
 
-=button_to 'Register To Volunteer', event_detail_path
+- if current_user.volunteer or current_user.admin
+  - if not current_user.events.include?(@event)
+    =button_to 'Register To Volunteer', event_volunteer_path
+  - else
+    =button_to 'Unregister from Volunteering', event_unvolunteer_path
+- else
+  =link_to "Volunteer Sign Up", user_new_volunteer_path
 
 /=link_to 'Back to home page', root_path

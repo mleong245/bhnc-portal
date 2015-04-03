@@ -16,6 +16,25 @@ Given /the following users exist/ do |users_table|
   end
 end
 
+Given /the following events exist/ do |events_table|
+  events_table.hashes.each do |event|
+    # each returned element will be a hash whose key is the table header.
+    # you should arrange to add that movie to the database here.
+    currentEvent = Event.find_by_name(event[:name])
+    if not currentEvent or not currentEvent.location == event[:location] or not currentEvent.start == event[:start]
+      Event.create(event)
+    end
+  end
+end
+
+Given /I am signed in as admin/ do
+  User.create({:email => 'admin@gmail.com', :password => 'bhncadmin', :first_name => 'admin', :last_name => 'admin', :admin => true})
+  step 'I am on the sign_in page'
+  fill_in('user_email', :with => 'admin@gmail.com')
+  fill_in('user_password', :with => 'bhncadmin')
+  click_button('Log in')
+end
+
 Then /I give my log in information as the following: (.*)/ do |info|
   params = info.split(", ")
   fill_in("user_email", :with => params[0])
@@ -29,6 +48,31 @@ Then /I give my information as the following: (.*)/ do |info|
   fill_in("user_email", :with => params[2])
   fill_in("user_password", :with => params[3])
   fill_in("user_password_confirmation", :with => params[4])
+end
+
+When /I try to create new event "(.*)" at "(.*)" on "(.*)" from "(.*)" to "(.*)"$/ do |name, location, date, start_time, end_time|
+  fill_in("event_name", :with => name)
+  fill_in("event_location", :with => location)
+  fill_in("event_start", :with => date + start_time)
+  fill_in("event_end", :with => date + end_time)
+  click_button("Save")
+end
+
+Given /that the date is "(.*)"$/ do |time|
+  Timecop.freeze DateTime.parse(time)
+end
+
+When /I (try to sign up|have signed up) for "(.*)"$/ do |have, event|
+  click_link("More about " + event)
+  click_button("Register To Volunteer")
+end
+
+When /I try to unregister for "(.*)"$/ do |event|
+  click_button("Unregister from Volunteering")
+end
+
+Then /I shouldn't be able to sign up for "(.*)"$/ do |event|
+  page.should have_no_content("More about " + event)
 end
 
 #Necessary Web Steps

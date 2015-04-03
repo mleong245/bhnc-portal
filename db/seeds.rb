@@ -9,7 +9,10 @@
 
 User.create({:first_name => "First", :last_name => "Last", :email => 'admin@gmail.com', :password => 'bhncadmin', :admin => true})
 
-events = [{:name => 'Yo', :date => '25-Nov-1992', :description => 'hmmm', :full_description => 'yati yati ya'},]
+events = [{:name => 'Event 1', :description => 'This is the first event for BHNC',
+           :location => 'UC Berkeley', :start => '11-Jan-2016 8:00AM', :end => '11-Jan-2016 12:00PM'},
+          {:name => 'Event 2', :description => 'This is the second event for BHNC',
+           :location => 'UC Berkeley', :start => '12-Jan-2016 8:00AM', :end => '12-Jan-2016 12:00PM'}]
 
 events.each do |event|
   Event.create!(event)
