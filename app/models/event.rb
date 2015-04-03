@@ -19,7 +19,6 @@ class Event < ActiveRecord::Base
     time2 = self.end.to_formatted_s(:long_ordinal).split(" ")
     time1[3] + " - " + time2[3]
   end
-
 end
 
 #rails g scaffold name alekfn:string
