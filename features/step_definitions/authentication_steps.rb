@@ -21,7 +21,7 @@ Given /the following events exist/ do |events_table|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
     currentEvent = Event.find_by_name(event[:name])
-    if not currentEvent or not currentEvent.location == event[:location] or not currentEvent.start == event[:start]
+    if not currentEvent or not currentEvent.location == event[:location] or not currentEvent.starts_at == event[:starts_at]
       Event.create(event)
     end
   end

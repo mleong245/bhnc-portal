@@ -8,7 +8,7 @@ RailsAdmin.config do |config|
         required true
       end
       field :description
-      field :start do
+      field :starts_at do
         required true
       end
       field :end do
