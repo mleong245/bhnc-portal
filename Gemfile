@@ -28,6 +28,7 @@ gem 'haml'
 gem 'devise'
 gem 'rake'
 gem 'rails_admin'
+gem 'cancan'
 
 gem "watu_table_builder", :require => "table_builder"
 gem "simple_calendar", "~> 1.1.0"
