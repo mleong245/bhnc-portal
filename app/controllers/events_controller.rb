@@ -22,7 +22,4 @@ class EventsController < ApplicationController
     redirect_to event_detail_path
   end
 
-  def index
-    @event = Event.all
-  end
 end
