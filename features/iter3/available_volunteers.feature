@@ -2,7 +2,7 @@ Feature: View available volunteers
 
   As a BHNC official
   I would like to be able to view hours that volunteers are available
-  So that I can contact individuals if I need additional help/
+  So that I can contact individuals if I need additional help
 
 Background:
   Given I am signed in as admin
