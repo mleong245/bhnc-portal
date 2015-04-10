@@ -5,9 +5,10 @@
 
 = render 'shared/calendar'
 
+= render 'shared/space_rentals_calendar'
+
 =link_to "Volunteer Sign Up", user_new_volunteer_path
 
+=link_to "Request a space rental", new_space_rental_request_path
 
 =link_to "Sign out", destroy_user_session_path, :method => :delete
-
-=link_to "Request a space rental", new_space_rental_request_path

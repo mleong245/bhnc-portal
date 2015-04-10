@@ -1,0 +1,44 @@
+<!-- app/views/shared/_space_rental_calendar.html.erb -->
+<head>
+    <title>Minimum Setup</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/calendar.css">
+</head>
+<body>
+
+   <h1>Spaces being rented out</h1>
+
+    <div id="calendar">
+    <%= week_calendar events: @events do |date, event, info| %>
+        <%= date.day %>
+
+        <% start = date.beginning_of_day %>
+        <% ending = date.end_of_day %>
+        <table class="day-schedule">
+            <% while start < ending do %>
+                <tr>
+                    <td>
+                        <div class="day-hour">
+                            <%= start.strftime("%I:%M %p") %>
+                        </div>
+                    </td>
+                </tr>
+
+                <% start += 0.5.hours %>
+            <% end %>
+        </table>
+    <% end %>
+
+    </div>
+
+    <script type="text/javascript" src="js/vendor/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="js/vendor/underscore-min.js"></script>
+    <script type="text/javascript" src="js/calendar.js"></script>
+    <script type="text/javascript">
+        var calendar = $("#calendar").calendar(
+            {
+                tmpl_path: "/tmpls/",
+                events_source: @events
+            });
+    </script>
+</body>
