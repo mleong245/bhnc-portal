@@ -8,13 +8,13 @@
 
    <h1>Spaces being rented out</h1>
 
-    <div id="calendar">
+    <div id="calendar" class="day-schedule">
     <%= week_calendar events: @events do |date, event, info| %>
         <%= date.day %>
 
         <% start = date.beginning_of_day %>
         <% ending = date.end_of_day %>
-        <table class="day-schedule">
+        <table>
             <% while start < ending do %>
                 <tr>
                     <td>
