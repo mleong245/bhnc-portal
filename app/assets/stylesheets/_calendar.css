@@ -65,3 +65,7 @@
   height: 300px;
   overflow: auto;
 }
+
+#calendar .highlite {
+  background-color: #E67373;
+}

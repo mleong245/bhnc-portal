@@ -17,7 +17,15 @@
         <table>
             <% while start < ending do %>
                 <tr>
-                    <td>
+                <% highlite = ''%>
+                <% rentals.each do |rental| %>
+                    <% if (rental.start > start && rental.start < (start + 0.5.hours)) || (start >= rental.start && start <= rental.end)%>
+                        <% highlite = 'highlite'%>
+                        <% break %>
+                    <% end %>
+                 <% end %>
+
+                     <td class="<%= highlite %>">
                         <div class="day-hour">
                             <%= start.strftime("%I:%M %p") %>
                             <% rentals.each do |rental|%>
