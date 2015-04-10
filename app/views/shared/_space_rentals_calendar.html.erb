@@ -9,7 +9,7 @@
    <h1>Spaces being rented out</h1>
 
     <div id="calendar" class="day-schedule">
-    <%= week_calendar events: @events do |date, event, info| %>
+    <%= week_calendar events: @space_rental_requests do |date, rentals, info| %>
         <%= date.day %>
 
         <% start = date.beginning_of_day %>
@@ -20,6 +20,12 @@
                     <td>
                         <div class="day-hour">
                             <%= start.strftime("%I:%M %p") %>
+                            <% rentals.each do |rental|%>
+                                <% has_user = (rental.user != nil)%>
+                                <% if has_user && rental.start > start && rental.start < (start + 0.5.hours)%>
+                                    <%= "#{rental.user.first_name} #{rental.user.last_name.to_s[0]}"%>
+                                <% end %>
+                            <% end %>
                         </div>
                     </td>
                 </tr>

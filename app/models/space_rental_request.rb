@@ -30,6 +30,10 @@ class SpaceRentalRequest < ActiveRecord::Base
     end
   end
 
+  def starts_at
+    self.start
+  end
+
   private
 
   def overlaps_with(time)
