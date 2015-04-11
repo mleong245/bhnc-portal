@@ -17,21 +17,13 @@
         <table>
             <% while start < ending do %>
                 <tr>
-                <% highlite = ''%>
-                <% rentals.each do |rental| %>
-                    <% if (rental.start > start && rental.start < (start + 0.5.hours)) || (start >= rental.start && start <= rental.end)%>
-                        <% highlite = 'highlite'%>
-                        <% break %>
-                    <% end %>
-                 <% end %>
-
-                     <td class="<%= highlite %>">
+                    <% highlite = SpaceRentalRequest.highlight?(rentals, start) ? "highlite" : "" %>
+                    <td class="<%= highlite %>">
                         <div class="day-hour">
                             <%= start.strftime("%I:%M %p") %>
                             <% rentals.each do |rental|%>
-                                <% has_user = (rental.user != nil)%>
-                                <% if has_user && rental.start > start && rental.start < (start + 0.5.hours)%>
-                                    <%= "#{rental.user.first_name} #{rental.user.last_name.to_s[0]}"%>
+                                <% if rental.display_name?(start) %>
+                                    <%= rental.first_and_last_initial %>
                                 <% end %>
                             <% end %>
                         </div>
