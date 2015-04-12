@@ -1,50 +1,42 @@
 <!-- app/views/shared/_space_rental_calendar.html.erb -->
-<head>
-    <title>Minimum Setup</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/calendar.css">
-</head>
 <body>
+    <h1>Spaces being rented out</h1>
+    <ul class="nav nav-tabs">
+        <% @space_rental_locations.each do |location |%>
+            <li><a href="#<%= location %>" data-toggle="tab"><%= location %></a></li>
+        <% end %>
+    </ul>
+    <div id="tab-content" class="tab-content">
+        <% @space_rental_locations.each do |location| %>
+            <div class="tab-pane" id="<%= location %>">
+                <div id="calendar" class="day-schedule">
+                    <%= week_calendar events: @space_rental_requests do |date, rentals, info| %>
+                        <%= date.day %>
 
-   <h1>Spaces being rented out</h1>
+                        <% start = date.beginning_of_day %>
+                        <% ending = date.end_of_day %>
+                        <table>
+                        <% while start < ending do %>
+                            <tr>
+                            <% highlite = SpaceRentalRequest.highlight?(rentals, start) ? "highlite" : "" %>
+                                <td class="<%= highlite %>">
+                                    <div class="day-hour">
+                                        <%= start.strftime("%I:%M %p") %>
+                                        <% rentals.each do |rental|%>
+                                            <% if rental.display_name?(start) %>
+                                                <%= rental.first_and_last_initial %>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </td>
+                            </tr>
 
-    <div id="calendar" class="day-schedule">
-    <%= week_calendar events: @space_rental_requests do |date, rentals, info| %>
-        <%= date.day %>
-
-        <% start = date.beginning_of_day %>
-        <% ending = date.end_of_day %>
-        <table>
-            <% while start < ending do %>
-                <tr>
-                    <% highlite = SpaceRentalRequest.highlight?(rentals, start) ? "highlite" : "" %>
-                    <td class="<%= highlite %>">
-                        <div class="day-hour">
-                            <%= start.strftime("%I:%M %p") %>
-                            <% rentals.each do |rental|%>
-                                <% if rental.display_name?(start) %>
-                                    <%= rental.first_and_last_initial %>
-                                <% end %>
-                            <% end %>
-                        </div>
-                    </td>
-                </tr>
-
-                <% start += 0.5.hours %>
-            <% end %>
-        </table>
-    <% end %>
-
+                            <% start += 0.5.hours %>
+                        <% end %>
+                        </table>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
     </div>
-
-    <script type="text/javascript" src="js/vendor/jquery-1.9.1.js"></script>
-    <script type="text/javascript" src="js/vendor/underscore-min.js"></script>
-    <script type="text/javascript" src="js/calendar.js"></script>
-    <script type="text/javascript">
-        var calendar = $("#calendar").calendar(
-            {
-                tmpl_path: "/tmpls/",
-                events_source: @events
-            });
-    </script>
 </body>

@@ -2,6 +2,7 @@ class UserController < ApplicationController
   def show
     @events = Event.upcoming
     @space_rental_requests = SpaceRentalRequest.all
+    @space_rental_locations = SpaceRentalRequest.allLocations
   end
 
   def volunteer
