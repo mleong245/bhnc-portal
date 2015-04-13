@@ -40,7 +40,7 @@ class SpaceRentalRequest < ActiveRecord::Base
 
   def self.highlight?(rentals, time)
     rentals.each do |rental|
-      if rental.display_name?(time) || (time >= rental.start && time <= rental.end)
+      if rental.display_name?(time) || rental.overlaps_with(time)
         return true
       end
     end
@@ -51,9 +51,7 @@ class SpaceRentalRequest < ActiveRecord::Base
     "#{self.user.first_name} #{self.user.last_name.to_s[0]}"
   end
 
-  private
-
   def overlaps_with(time)
-    return time >= self.start && time <= self.end
+    return time >= self.start && time < self.end
   end
 end
