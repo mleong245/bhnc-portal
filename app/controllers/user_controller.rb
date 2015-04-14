@@ -4,7 +4,7 @@ class UserController < ApplicationController
     @space_rental_locations = SpaceRentalRequest.allLocations
     @space_rental_requests = {}
     @space_rental_locations.each do |location|
-        @space_rental_requests[location] = SpaceRentalRequest.where(:location => location)
+        @space_rental_requests[location] = SpaceRentalRequest.where(:location => location, :approved => true)
     end
   end
 

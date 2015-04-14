@@ -7,7 +7,7 @@ Then /(.+) from (.+) to (.+) should (|not )be highlighted on the calendar for "(
   day = date.split('-')[1].to_i
   diff = day - Time.now.day
   highlited = find("##{location} .wday-#{diff} table", :text => start_time).has_css?(".highlite")
-  if highlite != nil
+  if highlite != 'not '
     expect(highlited).to be_true
   else
     expect(highlited).to be_false
