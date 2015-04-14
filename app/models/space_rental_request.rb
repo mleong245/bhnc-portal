@@ -35,7 +35,7 @@ class SpaceRentalRequest < ActiveRecord::Base
   end
 
   def display_name?(time)
-    self.user != nil && self.start > time && self.start < (time + 0.5.hours)
+    self.user != nil && self.start >= time && self.start < (time + 0.5.hours)
   end
 
   def self.highlight?(rentals, time)
