@@ -78,4 +78,29 @@ describe UserController do
       expect(response).to redirect_to(user_new_volunteer_path)
     end
   end
+  describe 'space rental calendar functions' do
+    before do
+      SpaceRentalRequest.allLocations.each do |location|
+        SpaceRentalRequest.create(:location => location, :start => DateTime.now, :end => DateTime.now)
+      end
+      get :show, :id => @user.id
+    end
+    it 'assigns @space_rental_locations' do
+      expect(assigns(:space_rental_locations)).to eq(SpaceRentalRequest.allLocations)
+    end
+    it 'separates requests by location' do
+      space_rental_requests = assigns(:space_rental_requests)
+      fails = false
+      space_rental_locations = SpaceRentalRequest.allLocations
+      space_rental_locations.each do |location|
+        space_rental_requests[location].each do |rental|
+          if rental.location != location
+            fails = true
+            break
+          end
+        end
+        expect(fails).to be_false
+      end
+    end
+  end
 end
