@@ -3,13 +3,13 @@
     <h1>Spaces being rented out</h1>
     <ul class="nav nav-tabs">
         <% @space_rental_locations.each do |location| %>
-            <li><a href="#<%= location %>" data-toggle="tab"><%= location %></a></li>
+            <li><a href="#<%= location.gsub ' ', '_' %>" data-toggle="tab"><%= location %></a></li>
         <% end %>
     </ul>
     <div id="tab-content" class="tab-content">
         <% @space_rental_locations.each do |location| %>
             <% active = @space_rental_locations[0] == location ? "active" : "" %>
-            <div class="tab-pane <%= active %>" id="<%= location %>">
+            <div class="tab-pane <%= active %>" id="<%= location.gsub ' ', '_' %>">
                 <div id="calendar" class="day-schedule">
                     <%= week_calendar events: @space_rental_requests[location] do |date, rentals, info| %>
                         <%= date.day %>

@@ -6,7 +6,7 @@ Then /(.+) from (.+) to (.+) should (|not )be highlighted on the calendar for "(
   step %Q{I follow "#{location}"}
   day = date.split('-')[1].to_i
   diff = day - Time.now.day
-  highlited = all("##{location} .highlite")
+  highlited = all("##{location.gsub ' ', '_'} .highlite")
   if highlite == 'not '
     expect(highlited.size).to eq(0)
   else
