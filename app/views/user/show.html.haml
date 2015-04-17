@@ -5,7 +5,10 @@
 
 = render 'shared/calendar'
 
-=link_to "Volunteer Sign Up", user_new_volunteer_path
+-unless current_user.volunteer or current_user.admin
+  =link_to "Volunteer Sign Up", user_new_volunteer_path
+-else
+  =link_to "Edit your available hours", edit_available_hours_path
 
 
 =link_to "Sign out", destroy_user_session_path, :method => :delete
