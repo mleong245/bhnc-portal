@@ -7,7 +7,7 @@ class SpaceRentalRequest < ActiveRecord::Base
 
   # Update later once we get list of spaces to rent
   def self.allLocations
-    return ['Location1', 'Location2', 'Location3']
+    return ['BHNC 515 Cortland St downstairs multipurpose room', 'BHNC 515 Cortland St upstairs conference room', 'ECC 4468 Mission Street']
   end
 
   def approved?

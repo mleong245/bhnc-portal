@@ -14,8 +14,8 @@
                     <%= week_calendar events: @space_rental_requests[location] do |date, rentals, info| %>
                         <%= date.day %>
 
-                        <% start = date.beginning_of_day %>
-                        <% ending = date.end_of_day %>
+                        <% start = date.beginning_of_day.advance(:hours => 8) %>
+                        <% ending = start.advance(:hours => 12) %>
                         <table>
                         <% while start < ending do %>
                             <tr>
