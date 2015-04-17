@@ -6,11 +6,12 @@ Then /(.+) from (.+) to (.+) should (|not )be highlighted on the calendar for "(
   step %Q{I follow "#{location}"}
   day = date.split('-')[1].to_i
   diff = day - Time.now.day
-  highlited = find("##{location} .wday-#{diff} table", :text => start_time).has_css?(".highlite")
-  if highlite != 'not '
-    expect(highlited).to be_true
+  highlited = all("##{location} .highlite")
+  if highlite == 'not '
+    expect(highlited.size).to eq(0)
   else
-    expect(highlited).to be_false
+    expected_size = (end_time[0].to_i - start_time[0].to_i) * 2
+    expect(highlited.size).to eq(expected_size)
   end
 end
 

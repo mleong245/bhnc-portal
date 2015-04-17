@@ -32,7 +32,7 @@ Given /"(.+)" is reserved on (\d\d-\d\d-\d\d\d\d) from (\d\d:\d\d [AP]M) to (\d\
   end_time = "#{end_time[0, 5]}:00 #{end_time[6,2]}"
   start_datetime = DateTime.strptime("#{day} #{start_time}", '%m-%d-%Y %I:%M:%S %p')
   end_datetime = DateTime.strptime("#{day} #{end_time}", '%m-%d-%Y %I:%M:%S %p')
-  request = SpaceRentalRequest.create(:location => location, :start => start_datetime, :end => end_datetime, :approved => true)
+  request = SpaceRentalRequest.create(:location => location, :start => start_datetime + 8.hours, :end => end_datetime + 8.hours, :approved => true)
   request.user = @user
 end
 

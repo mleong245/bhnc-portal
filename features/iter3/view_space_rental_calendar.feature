@@ -5,7 +5,7 @@ Feature: View space rental calendar
 
   Background:
     Given I am an authenticated user
-    And it is the week of March 2nd 2015
+    And it is the week of March 3rd 2015
 
   Scenario: See approved requests
     Given "Location1" is reserved on 03-02-2015 from 01:00 PM to 02:00 PM
