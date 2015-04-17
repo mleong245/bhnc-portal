@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 20150331021445) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                            default: false, null: false
-    t.boolean  "volunteer",                        default: false, null: false
     t.string   "street_address"
     t.string   "city"
     t.integer  "zip_code"
     t.string   "company"
+    t.boolean  "admin",                            default: false, null: false
+    t.boolean  "volunteer",                        default: false, null: false
     t.integer  "phone",                  limit: 8
   end
 
