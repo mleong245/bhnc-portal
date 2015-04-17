@@ -6,7 +6,7 @@ Feature: Sign up to volunteer for BHNC
 
 Background:
 
-  Given I am an authenticated volunteer with email "foo@gmail.com" and password "12345678"
+  Given I am a perspective volunteer with email "foo@gmail.com" and password "12345678"
   And I am on the landing page
 
 Scenario: Sign up successfully (Happy path)
