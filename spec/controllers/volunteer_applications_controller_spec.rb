@@ -30,130 +30,68 @@ describe VolunteerApplicationsController do
   # VolunteerApplicationsController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET index" do
-    it "assigns all volunteer_applications as @volunteer_applications" do
-      volunteer_application = VolunteerApplication.create! valid_attributes
-      get :index, {}, valid_session
-      assigns(:volunteer_applications).should eq([volunteer_application])
+  before do
+    @user = User.create(:first_name => "First", :last_name => "Last", :email => "email@email.com", :password => "12345678")
+    sign_in @user
+    Timecop.freeze DateTime.parse("March 30th 2015")
+  end
+
+  describe "GET volunteer" do
+    it "renders the Volunteer register page" do
+      get :volunteer, :id => @user.id
+      expect(response).to render_template("volunteer")
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested volunteer_application as @volunteer_application" do
-      volunteer_application = VolunteerApplication.create! valid_attributes
-      get :show, {:id => volunteer_application.to_param}, valid_session
-      assigns(:volunteer_application).should eq(volunteer_application)
+  describe "Valid POST newVolunteer" do
+    before do
+      post :newVolunteer, :id => @user.id, :volunteer => {:street_address => "2020 Kittredege Street",
+                                                          :city => "Berkeley",
+                                                          :zip_code => "95843",
+                                                          :phone => "9168357434",
+                                                          :company => "Blah"}
+    end
+
+    it "assigns @user" do
+      expect(assigns(:user)).to eq(@user)
+    end
+
+    it "assigns @valid" do
+      expect(assigns(:valid)).to eq(true)
+    end
+
+    it "assigns flash[:notice]" do
+      expect(flash[:notice]).to eq("Successfully signed up!")
+    end
+
+    it "redirects to landing" do
+      expect(response).to redirect_to('/')
     end
   end
 
-  describe "GET new" do
-    it "assigns a new volunteer_application as @volunteer_application" do
-      get :new, {}, valid_session
-      assigns(:volunteer_application).should be_a_new(VolunteerApplication)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested volunteer_application as @volunteer_application" do
-      volunteer_application = VolunteerApplication.create! valid_attributes
-      get :edit, {:id => volunteer_application.to_param}, valid_session
-      assigns(:volunteer_application).should eq(volunteer_application)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new VolunteerApplication" do
-        expect {
-          post :create, {:volunteer_application => valid_attributes}, valid_session
-        }.to change(VolunteerApplication, :count).by(1)
-      end
-
-      it "assigns a newly created volunteer_application as @volunteer_application" do
-        post :create, {:volunteer_application => valid_attributes}, valid_session
-        assigns(:volunteer_application).should be_a(VolunteerApplication)
-        assigns(:volunteer_application).should be_persisted
-      end
-
-      it "redirects to the created volunteer_application" do
-        post :create, {:volunteer_application => valid_attributes}, valid_session
-        response.should redirect_to(VolunteerApplication.last)
-      end
+  describe "Invalid POST newVolunteer" do
+    before do
+      post :newVolunteer, :id => @user.id, :volunteer => {:street_address => "2020 Kittredege Street",
+                                                          :city => "Berkeley",
+                                                          :zip_code => "95843",
+                                                          :phone => "916",
+                                                          :company => "Blah"}
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved volunteer_application as @volunteer_application" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        VolunteerApplication.any_instance.stub(:save).and_return(false)
-        post :create, {:volunteer_application => {  }}, valid_session
-        assigns(:volunteer_application).should be_a_new(VolunteerApplication)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        VolunteerApplication.any_instance.stub(:save).and_return(false)
-        post :create, {:volunteer_application => {  }}, valid_session
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested volunteer_application" do
-        volunteer_application = VolunteerApplication.create! valid_attributes
-        # Assuming there are no other volunteer_applications in the database, this
-        # specifies that the VolunteerApplication created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        VolunteerApplication.any_instance.should_receive(:update).with({ "these" => "params" })
-        put :update, {:id => volunteer_application.to_param, :volunteer_application => { "these" => "params" }}, valid_session
-      end
-
-      it "assigns the requested volunteer_application as @volunteer_application" do
-        volunteer_application = VolunteerApplication.create! valid_attributes
-        put :update, {:id => volunteer_application.to_param, :volunteer_application => valid_attributes}, valid_session
-        assigns(:volunteer_application).should eq(volunteer_application)
-      end
-
-      it "redirects to the volunteer_application" do
-        volunteer_application = VolunteerApplication.create! valid_attributes
-        put :update, {:id => volunteer_application.to_param, :volunteer_application => valid_attributes}, valid_session
-        response.should redirect_to(volunteer_application)
-      end
+    it "assigns @user" do
+      expect(assigns(:user)).to eq(@user)
     end
 
-    describe "with invalid params" do
-      it "assigns the volunteer_application as @volunteer_application" do
-        volunteer_application = VolunteerApplication.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        VolunteerApplication.any_instance.stub(:save).and_return(false)
-        put :update, {:id => volunteer_application.to_param, :volunteer_application => {  }}, valid_session
-        assigns(:volunteer_application).should eq(volunteer_application)
-      end
-
-      it "re-renders the 'edit' template" do
-        volunteer_application = VolunteerApplication.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        VolunteerApplication.any_instance.stub(:save).and_return(false)
-        put :update, {:id => volunteer_application.to_param, :volunteer_application => {  }}, valid_session
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested volunteer_application" do
-      volunteer_application = VolunteerApplication.create! valid_attributes
-      expect {
-        delete :destroy, {:id => volunteer_application.to_param}, valid_session
-      }.to change(VolunteerApplication, :count).by(-1)
+    it "assigns @valid" do
+      expect(assigns(:valid)).to eq(false)
     end
 
-    it "redirects to the volunteer_applications list" do
-      volunteer_application = VolunteerApplication.create! valid_attributes
-      delete :destroy, {:id => volunteer_application.to_param}, valid_session
-      response.should redirect_to(volunteer_applications_url)
+    it "assigns flash[:notice]" do
+      expect(flash[:alert]).to eq("Please check the format of your address and phone number")
+    end
+
+    it "redirects to landing" do
+      expect(response).to redirect_to(user_new_volunteer_path)
     end
   end
 
