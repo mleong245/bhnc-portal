@@ -7,8 +7,8 @@ Feature: View available volunteers
 Background:
   Given I am signed in as admin
   And I am on the admin landing page
+  And "User One" is available at "Sunday, 8:00AM"
 
 Scenario: View available volunteers (Happy Path)
-  When I look at the available volunteers
-  Then I should see a list of volunteers who are currently available
-  And I should not see any people who are not currently available
+  When I look at the available volunteers for "Sunday, 8:00AM"
+  Then I should see a that "User One" is available
