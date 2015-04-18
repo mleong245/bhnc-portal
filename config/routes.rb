@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/user/event/:id', to: 'events#event_unvolunteer', as: 'event_unvolunteer'
   get '/volunteer/', to: 'user#volunteer', as: 'user_new_volunteer'
   post '/volunteer/', to: 'user#newVolunteer', as: 'user_volunteer'
+  post '/start_date/', to: 'user#start_date', as: 'start_date'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

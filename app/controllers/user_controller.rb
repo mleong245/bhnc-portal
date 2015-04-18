@@ -1,6 +1,17 @@
 class UserController < ApplicationController
   def show
     @events = Event.upcoming
+    if params[:start_date]
+      @theDate = params[:start_date]
+    else
+      @theDate = Time.now.to_s
+    end
+  end
+
+  def start_date
+    date = params[:calendar]["date(1i)"] + "-" + params[:calendar]["date(2i)"] + "-" + params[:calendar]["date(3i)"]
+    params[:the_date] = date
+    redirect_to "/?start_date=#{date}"
   end
 
   def volunteer

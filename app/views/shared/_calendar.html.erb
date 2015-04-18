@@ -7,6 +7,13 @@
 <body>
 
     <div id="calendar">
+    <%= form_tag('/start_date') do %>
+      <span>
+        <%= date_select 'calendar', 'date', default: @theDate.to_date %>
+      </span>
+      <div><%= submit_tag 'Submit' %></div>
+    <% end -%>
+    
       <%= month_calendar events: @events do |date, event, info| %>
         <%= date.day %>
 
