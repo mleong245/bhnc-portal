@@ -5,6 +5,8 @@
 
 = render 'shared/calendar'
 
+= render 'shared/space_rentals_calendar'
+
 -unless current_user.volunteer or current_user.admin
   =link_to "Volunteer Sign Up", user_new_volunteer_path
 -else
