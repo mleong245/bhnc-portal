@@ -11,6 +11,7 @@ class AvailableHoursController < ApplicationController
     times.each do |time|
       current_user.available_hours << time
     end
+    flash[:notice] = "Successfully updated available hours!"
     redirect_to user_path(current_user)
   end
 
