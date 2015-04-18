@@ -25,7 +25,7 @@ module NavigationHelpers
 
     #CHANGE THIS FOR VOLUNTEER AVAILABLE HOURS
     when /^the edit hours page/ then '/hours/'
-
+    when /^the admin path for (.*)/ then "/admin/available_hour/#{$1}"
     when /^the space rental requests page/ then new_space_rental_request_path
 
 
