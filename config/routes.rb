@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :volunteer_applications
+
   resources :space_rental_requests
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'user#show'

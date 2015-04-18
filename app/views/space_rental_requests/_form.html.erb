@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :start %><br>
-    <%= f.datetime_select :start, :ampm => true%>
+    <%= f.datetime_select :start, :start_hour => 8, :end_hour => 20, :ampm => true %>
   </div>
   <div class="field">
     <%= f.label :end %><br>
-    <%= f.datetime_select :end, :ampm => true%>
+    <%= f.datetime_select :end, :start_hour => 8, :end_hour => 20, :ampm => true %>
   </div>
   <div class="field">
     <%= f.label :description %><br>

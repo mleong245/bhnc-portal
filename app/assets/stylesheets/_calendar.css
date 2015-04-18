@@ -60,3 +60,12 @@
   font-size: 11px;
   text-align: center;
 }
+
+#calendar.day-schedule {
+  height: 300px;
+  overflow: auto;
+}
+
+#calendar .highlite {
+  background-color: #E67373;
+}

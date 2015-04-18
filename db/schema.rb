@@ -77,4 +77,17 @@ ActiveRecord::Schema.define(version: 20150417210119) do
     t.integer "event_id"
   end
 
+  create_table "volunteer_applications", force: :cascade do |t|
+    t.integer  "user_id",                        null: false
+    t.string   "name",                           null: false
+    t.boolean  "approved",       default: false, null: false
+    t.string   "street_address",                 null: false
+    t.string   "city",                           null: false
+    t.string   "zip_code",                       null: false
+    t.string   "phone",                          null: false
+    t.string   "company",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+  end
+
 end

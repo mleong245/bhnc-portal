@@ -9,9 +9,6 @@ class User < ActiveRecord::Base
   validates_formatting_of :first_name, :using => :alpha
   validates_formatting_of :last_name, :using => :alpha
   validates_formatting_of :email, :using => :email
-  validates_formatting_of :zip_code, :using => :us_zip, :allow_blank => true
-  validates_formatting_of :phone, :using => :us_phone, :allow_blank => true
-  validates_formatting_of :street_address, :using => :address, :allow_blank => true
   has_many :space_rental_requests, :dependent => :nullify
 
   def available?(day, time)
