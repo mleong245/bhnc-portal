@@ -1,1 +1,19 @@
 Feature: Add authorization for space rental requests
+
+  As a community member
+  So I can easily find only my own rental requests
+  I want to only be able to see requests I made
+  
+Background:
+  Given I am an DELETE authenticated user
+  And I have requested some place at some time
+  And some person has requested some place at some time
+
+Scenario: Only see my own requests
+  When I am on the DELETE space rental requests page
+  Then I should see my own request
+  And I should not see some person's request
+  
+Scenario: Can't edit another person's request
+  When I go the some persons' request page
+  Then I should be on the space rental request page
