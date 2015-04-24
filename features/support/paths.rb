@@ -27,6 +27,7 @@ module NavigationHelpers
     when /^the edit hours page/ then '/hours/'
     when /^the admin path for (.*)/ then "/admin/available_hour/#{$1}"
     when /^the space rental requests page/ then new_space_rental_request_path
+    when /^the space rental requests index page/ then space_rental_requests_path
 
 
     # Add more mappings here.
