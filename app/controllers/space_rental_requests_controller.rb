@@ -4,12 +4,15 @@ class SpaceRentalRequestsController < ApplicationController
   # GET /space_rental_requests
   # GET /space_rental_requests.json
   def index
-    @space_rental_requests = SpaceRentalRequest.all
+    @space_rental_requests = SpaceRentalRequest.where(:user => current_user)
   end
 
   # GET /space_rental_requests/1
   # GET /space_rental_requests/1.json
   def show
+    if SpaceRentalRequest.find(params[:id]).user != current_user
+      redirect_to space_rental_requests_path
+    end
   end
 
   # GET /space_rental_requests/new
