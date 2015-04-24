@@ -16,16 +16,16 @@ end
 Then /I should see my own request/ do
   request = @user.space_rental_requests[0]
   step %Q{I should see "#{request.location}"}
-  step %Q{I should see "#{request.start.to_s}"}
-  step %Q{I should see "#{request.end.to_s}"}
+  step %Q{I should see "#{request.display_time(request.start)}"}
+  step %Q{I should see "#{request.display_time(request.end)}"}
 end
 
 Then /I should not see (.+)'s request/ do |name|
   user = User.find_by_first_name(name)
   request = user.space_rental_requests[0]
   has_location = page.body.index(request.location) != nil
-  has_start_time = page.body.index(request.start.to_s) != nil
-  has_end_time = page.body.index(request.end.to_s) != nil
+  has_start_time = page.body.index(request.display_time(request.start)) != nil
+  has_end_time = page.body.index(request.display_time(request.end)) != nil
   expect(has_location && has_start_time && has_end_time).to be_false
 end
 

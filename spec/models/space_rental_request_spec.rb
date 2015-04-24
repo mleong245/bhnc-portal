@@ -72,4 +72,8 @@ describe SpaceRentalRequest do
     request.user = user
     expect(request.first_and_last_initial).to eq('First L')
   end
+  it 'should display the time in a readable format' do
+    request = SpaceRentalRequest.new(:start => DateTime.new(2015, 1, 2, 3, 4, 5, '-7'))
+    expect(request.display_time(request.start)).to eq('01/02/2015  2:04 AM')
+  end
 end
