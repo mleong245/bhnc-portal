@@ -63,7 +63,9 @@ Given /that the date is "(.*)"$/ do |time|
 end
 
 When /I (try to sign up|have signed up) for "(.*)"$/ do |have, event|
-  click_link("More about " + event)
+  within(".col-md-5") do
+    click_link(event)
+  end
   click_button("Register To Volunteer")
 end
 
@@ -72,7 +74,7 @@ When /I try to unregister for "(.*)"$/ do |event|
 end
 
 Then /I shouldn't be able to sign up for "(.*)"$/ do |event|
-  page.should have_no_content("More about " + event)
+  page.should have_no_content(event)
 end
 
 #Necessary Web Steps
