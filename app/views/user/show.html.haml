@@ -1,18 +1,13 @@
 -# This file is app/views/user/show.html.haml
 %h1 Welcome to the BHNC Website
 
-= render 'shared/upcoming_events'
 
-= render 'shared/calendar'
+.col-md-5
+  = render 'shared/upcoming_events'
+
+.col-md-7
+  = render 'shared/calendar'
+
+%br
 
 = render 'shared/space_rentals_calendar'
-
--unless current_user.volunteer or current_user.admin
-  =link_to "Volunteer Sign Up", user_new_volunteer_path
--else
-  =link_to "Edit your available hours", edit_available_hours_path
-
-
-=link_to "Sign out", destroy_user_session_path, :method => :delete
-
-=link_to "Request a space rental", new_space_rental_request_path

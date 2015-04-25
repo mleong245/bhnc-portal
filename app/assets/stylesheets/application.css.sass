@@ -16,3 +16,60 @@
 
 @import "bootstrap-sprockets"
 @import "bootstrap"
+
+body
+  padding-top: 70px
+
+.navbar-default
+  background-color: #2196F3
+  .navbar-nav >
+    .active > a:hover
+      background-color: #1875BF
+    li > a
+      &:hover, &:focus
+        background-color: #1875BF
+    .active > a
+      background-color: #1875BF
+    .open > a
+      background-color: #1875BF
+      &:hover, &:focus
+        background-color: #1875BF
+.dropdown-menu
+  background-color: #FFFFFF
+  > li > a
+    &:hover, &:focus
+      background-color: #1875BF
+.navbar-default
+  background-image: none
+.dropdown-menu > li > a
+  &:hover, &:focus
+    background-image: none
+.navbar-default
+  border-color: #2196F3
+  .navbar-brand
+    color: #FFFFFF
+    &:hover
+      color: #FFFFFF
+  .navbar-nav >
+    li > a
+      color: #FFFFFF
+      &:hover, &:focus
+        color: #FFFFFF
+    .active > a
+      color: #FFFFFF
+    .open > a
+      color: #FFFFFF
+      &:hover, &:focus
+        color: #FFFFFF
+    .active > a
+      &:hover, &:focus
+        color: #FFFFFF
+.dropdown-menu > li > a
+  color: #333333
+  &:hover, &:focus
+    color: #FFFFFF
+.navbar-default .navbar-nav > .dropdown > a
+  .caret, &:hover .caret
+    border-top-color: #FFFFFF
+  .caret, &:hover .caret
+    border-bottom-color: #FFFFFF
