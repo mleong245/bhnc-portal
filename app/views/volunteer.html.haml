@@ -1,8 +1,11 @@
 
 
-%h1 Become a Volunteer
+%h1 Volunteer Application
 
 = form_tag user_volunteer_path, :method => :put do
+
+= label :volunteer, :date 'Date'
+= text_field :volunteer, 'date'
 
 = label :volunteer, :street_address 'Street Address'
 = text_field :volunteer, 'street_address'
@@ -16,7 +19,47 @@
 = label :volunteer, :phone_number 'Phone Number'
 = telephone_field :volunteer, 'phone_number'
 
-= label :volunteer, :company 'Company'
-= text_field :volunteer, 'company'
+= label :volunteer, :birth_date 'Birth Date'
+= text_field :volunteer, 'birth_date'
+
+= label :volunteer, :work_hours 'May we contact you during work hours?'
+= text_field :volunteer, 'work_hours'
+
+= label :volunteer, :emergency_contact 'Emergency Contact'
+= text_field :volunteer, 'emergency_contact'
+
+= label :volunteer, :emergency_phone_number 'Emergency Contact Number'
+= telephone_field :volunteer, 'emergency_phone_number'
+
+%h1 Employment
+
+= label :volunteer, :occupation 'Occupation'
+= text_field :volunteer, 'occupation'
+
+= label :volunteer, :employer 'Employer'
+= text_field :volunteer, 'employer'
+
+= label :volunteer, :work 'Full Time / Part Time / None'
+= text_field :volunteer, 'work'
+
+%h1 Other Details
+
+= label :volunteer, :current 'Current Volunteer Experiences'
+= text_field :volunteer, 'current'
+
+= label :volunteer, :past 'Past Volunteer Experiences'
+= text_field :volunteer, 'past'
 
 = submit_tag 'Sign Up'
+
+
+
+
+
+
+
+
+
+
+
+
