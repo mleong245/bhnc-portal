@@ -4,13 +4,9 @@
     %th Name
     %th Date
     %th Time
-    %th Location
-    %th More Information
   %tbody
     - @events.each do |event|
       %tr{:class => ("info" if current_user.events.include?(event))}
-        %td= event.name
+        %td= link_to event.name[0..15], event_detail_path(event)
         %td= event.date
         %td= event.time
-        %td= event.location
-        %td= link_to "More about #{event.name}", event_detail_path(event)

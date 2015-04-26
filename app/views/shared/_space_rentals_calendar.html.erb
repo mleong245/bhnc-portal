@@ -25,7 +25,7 @@
                                         <%= start.strftime("%I:%M %p") %>
                                         <% rentals.each do |rental|%>
                                             <% if rental.display_name?(start) %>
-                                                <%= rental.first_and_last_initial %>
+                                                <a data-toggle="tooltip" title="<%= rental.description%>"><%= rental.first_and_last_initial %></a>
                                             <% end %>
                                         <% end %>
                                     </div>
