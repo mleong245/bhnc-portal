@@ -56,4 +56,8 @@ class SpaceRentalRequest < ActiveRecord::Base
   def overlaps_with(time)
     return time >= self.start && time <= self.end
   end
+
+  def display_time(time)
+    return time.strftime('%m/%d/%Y %l:%M %p')
+  end
 end

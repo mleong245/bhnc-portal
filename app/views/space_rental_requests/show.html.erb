@@ -7,12 +7,12 @@
 
 <p>
   <strong>Start:</strong>
-  <%= @space_rental_request.start %>
+  <%= @space_rental_request.display_time(@space_rental_request.start) %>
 </p>
 
 <p>
   <strong>End:</strong>
-  <%= @space_rental_request.end %>
+  <%= @space_rental_request.display_time(@space_rental_request.end) %>
 </p>
 
 <p>

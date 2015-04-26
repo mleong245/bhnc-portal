@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "space_rental_requests/show" do
   before(:each) do
     @space_rental_request = assign(:space_rental_request, stub_model(SpaceRentalRequest,
-      :location => "Location"
+      :location => "Location", :start => DateTime.new(2015, 1, 1), :end => DateTime.new(2015, 1, 1)
     ))
   end
 
