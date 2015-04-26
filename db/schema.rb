@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424230957) do
+ActiveRecord::Schema.define(version: 20150426022950) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -43,8 +43,6 @@ ActiveRecord::Schema.define(version: 20150424230957) do
     t.string   "company"
     t.integer  "phone",                        limit: 8
     t.string   "date"
-    t.string   "birth_date"
-    t.string   "work_hours"
     t.string   "emergency_contact"
     t.string   "occupation"
     t.string   "employer"
@@ -55,29 +53,42 @@ ActiveRecord::Schema.define(version: 20150424230957) do
     t.string   "referral"
     t.string   "languages"
     t.string   "extra_information"
-    t.string   "license_check"
-    t.string   "violations_check"
-    t.string   "car_check"
     t.string   "license_number"
     t.string   "auto_insurance_policy_number"
-    t.string   "class_b_license"
-    t.string   "photograph_consent"
-    t.string   "administrative"
-    t.string   "recreational_assistant"
-    t.string   "recreational_leader"
-    t.string   "computer_lab"
-    t.string   "brown_bag"
-    t.string   "food_box"
-    t.string   "food_distribution"
-    t.string   "friendly_visitor"
-    t.string   "sales_associate"
-    t.string   "sorters"
-    t.string   "handyperson"
-    t.string   "intern"
-    t.string   "lunch_service"
-    t.string   "personal_driver"
-    t.string   "translator"
     t.string   "other_interests"
+    t.string   "professional_name"
+    t.string   "professional_relationship"
+    t.integer  "professional_phone",           limit: 8
+    t.string   "personal_name"
+    t.string   "personal_relationship"
+    t.integer  "personal_phone",               limit: 8
+    t.string   "time_commitment"
+    t.string   "signature"
+    t.string   "criminal_offense_explanation"
+    t.date     "the_date"
+    t.string   "birth_date"
+    t.boolean  "contact_during_work_hours",              default: false, null: false
+    t.boolean  "photograph_consent",                     default: false, null: false
+    t.boolean  "criminal_offense",                       default: false, null: false
+    t.boolean  "license_check",                          default: false, null: false
+    t.boolean  "violations_check",                       default: false, null: false
+    t.boolean  "car_check",                              default: false, null: false
+    t.boolean  "class_b_license",                        default: false, null: false
+    t.boolean  "administrative",                         default: false, null: false
+    t.boolean  "recreational_assistant",                 default: false, null: false
+    t.boolean  "recreational_leader",                    default: false, null: false
+    t.boolean  "computer_lab",                           default: false, null: false
+    t.boolean  "brown_bag",                              default: false, null: false
+    t.boolean  "food_box",                               default: false, null: false
+    t.boolean  "food_distribution",                      default: false, null: false
+    t.boolean  "friendly_visitor",                       default: false, null: false
+    t.boolean  "sales_associate",                        default: false, null: false
+    t.boolean  "sorters",                                default: false, null: false
+    t.boolean  "handyperson",                            default: false, null: false
+    t.boolean  "intern",                                 default: false, null: false
+    t.boolean  "lunch_service",                          default: false, null: false
+    t.boolean  "personal_driver",                        default: false, null: false
+    t.boolean  "translator",                             default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -1,45 +1,43 @@
-
-
 %h1 Become A Volunteer
 
 = form_tag user_volunteer_path do
   .form-group
-    = label :volunteer, :date, 'Date'
+    = label :volunteer_form, :the_date, 'Date'
     %br
-    = text_field :volunteer, 'date', :required => true
+    = date_select :volunteer, 'the_date', :required => true
 
   .form-group
-    = label :volunteer, :street_address, 'Street Address'
+    = label :volunteer_form, :street_address, 'Street Address'
     %br
     = text_field :volunteer, 'street_address', :required => true
 
   .form-group
-    = label :volunteer, :city, 'City'
+    = label :volunteer_form, :city, 'City'
     %br
     = text_field :volunteer, 'city', :required => true
 
   .form-group
-    = label :volunteer, :zip_code, 'Zip Code'
+    = label :volunteer_form, :zip_code, 'Zip Code'
     %br
     = text_field :volunteer, 'zip_code', :required => true
 
   .form-group
-    = label :volunteer, :phone, 'Phone Number'
+    = label :volunteer_form, :phone, 'Phone Number'
     %br
     = text_field :volunteer, 'phone', :required => true
 
   .form-group
-    = label :volunteer, :birth_date, 'Birth Date (optional)'
+    = label :volunteer_form, :birth_date, 'Birth Date (optional)'
     %br
     = text_field :volunteer, 'birth_date', :required => false
 
   .form-group
-    = label :volunteer, :emergency_contact, 'Emergency Contact'
+    = label :volunteer_form, :emergency_contact, 'Emergency Contact'
     %br
     = text_field :volunteer, 'emergency_contact', :required => true
 
   .form-group
-    = label :volunteer, :emergency_phone_number, 'Emergency Contact Number'
+    = label :volunteer_form, :emergency_phone_number, 'Emergency Contact Number'
     %br
     = text_field :volunteer, 'emergency_phone_number', :required => true
 
@@ -47,54 +45,54 @@
   %h5 If any of the fields aren't applicable, please leave them blank.
 
   .form-group
-    = label :volunteer, :company, 'Company'
+    = label :volunteer_form, :company, 'Company'
     %br
     = text_field :volunteer, 'company', :required => false
 
   .form-group
-    = label :volunteer, :occupation, 'Occupation'
+    = label :volunteer_form, :occupation, 'Occupation'
     %br
     = text_field :volunteer, 'occupation', :required => false
 
   .form-group
-    = label :volunteer, :employer, 'Employer'
+    = label :volunteer_form, :employer, 'Employer'
     %br
-    = text_field :volunteer, 'occupation', :required => false
+    = text_field :volunteer, 'employer', :required => false
 
   .form-group
-    = label :volunteer, :work, 'Full Time / Part Time'
+    = label :volunteer_form, :work, 'Full Time / Part Time'
     %br
     = text_field :volunteer, 'work', :required => false
 
   .form-group
-    = check_box_tag :volunteer, 'work_hours'
-    = label :volunteer, :work_hours, 'I can be contacted during work hours.'
+    = check_box_tag :volunteer_form, 'contact_during_work_hours'
+    = label :volunteer, :contact_during_work_hours, 'I can be contacted during work hours.'
 
   %h2 Other Details 
   %h5 If any of the fields aren't applicable, please leave them blank.
 
   .form-group
-    = label :volunteer, :current, 'Current Volunteer Experiences'
+    = label :volunteer_form, :current, 'Current Volunteer Experiences'
     %br
     = text_area :volunteer, 'current', :required => false
 
   .form-group
-    = label :volunteer, :past, 'Past Volunteer Experiences'
+    = label :volunteer_form, :past, 'Past Volunteer Experiences'
     %br
     = text_area :volunteer, 'past', :required => false
 
   .form-group
-    = label :volunteer, :referral, 'How did you hear about Bernal Heights?'
+    = label :volunteer_form, :referral, 'How did you hear about Bernal Heights?'
     %br
     = text_area :volunteer, 'referral', :required => false
 
   .form-group
-    = label :volunteer, :languages, 'What languages do you speak?'
+    = label :volunteer_form, :languages, 'What languages do you speak?'
     %br
     = text_area :volunteer, 'languages', :required => false
 
   .form-group
-    = label :volunteer, :extra_information, 'Is there any information we need to know from you that is important to do this work, or is there anything else you would like to tell us about yourself? Explain.'
+    = label :volunteer_form, :extra_information, 'Is there any information we need to know from you that is important to do this work, or is there anything else you would like to tell us about yourself? Explain.'
     %br
     = text_area :volunteer, 'extra_information', :required => false
 
@@ -102,108 +100,170 @@
   
   .form-group
     = check_box_tag :volunteer, 'photograph_consent'
-    = label :volunteer, :photograph_consent, "I hereby authorize the BHNC to use any photographs taken at the BNNC of me and/or my property."
+    = label :volunteer_form, :photograph_consent, "I hereby authorize the BHNC to use any photographs taken at the BNNC of me and/or my property."
+
+  %br
+
+  .form-group
+    = check_box_tag :volunteer, 'criminal_offense'
+    = label :volunteer_form, :criminal_offense, 'I have been convicted of criminal offense before.'
+
+  .form-group
+    = label :volunteer_form, :criminal_offense_explanation, 'If you have been convicted of criminal offense, please explain:'
+    %br
+    = text_area :volunteer, 'criminal_offense_explanation', :required => false
 
   %h2 Vehicle Information
 
   .form-group
     = check_box_tag :volunteer, 'license_check'
-    = label :volunteer, :license_check, "I have a valid CA driver's license."
+    = label :volunteer_form, :license_check, "I have a valid CA driver's license."
 
   .form-group
     = check_box_tag :volunteer, 'violations_check'
-    = label :volunteer, :violations_check, "My driving record is free of moving violations."
-    
+    = label :volunteer_form, :violations_check, "My driving record is free of moving violations."
 
   .form-group
     = check_box_tag :volunteer, 'car_check'
-    = label :volunteer, :car_check, "I am willing to use my car for a volunteer assignment."
+    = label :volunteer_form, :car_check, "I am willing to use my car for a volunteer assignment."
     
   %h4 If you are willing to use your car for a volunteer assignment, please supply the following information:
 
   .form-group
-    = label :volunteer, :license_number, "License #"
+    = label :volunteer_form, :license_number, "License #"
     %br
     = text_field :volunteer, 'license_number', :required => false
 
   .form-group
-    = label :volunteer, :auto_insurance_policy_number, "Auto Insurance Policy #"
+    = label :volunteer_form, :auto_insurance_policy_number, "Auto Insurance Policy #"
     %br
     = text_field :volunteer, 'auto_insurance_policy_number', :required => false
 
   .form-group
     = check_box_tag :volunteer, 'class_b_license'
-    = label :volunteer, :class_b_license, "I have a class B license and I am willing to drive an agency vehicle for client outings."
+    = label :volunteer_form, :class_b_license, "I have a class B license and I am willing to drive an agency vehicle for client outings."
 
   %h2 BHNC Volunteer Opportunities
   %h4 Please check if interested, otherwise leave blank
 
   .form-group
     = check_box_tag :volunteer, 'administrative'
-    = label :volunteer, :administrative, "ADMINISTRATIVE/GENERAL OFFICE: Assist with clerical and program needs."
+    = label :volunteer_form, :administrative, "ADMINISTRATIVE/GENERAL OFFICE: Assist with clerical and program needs."
   
   .form-group
     = check_box_tag :volunteer, 'recreational_assistant'
-    = label :volunteer, :recreational_assistant, "RECREATIONAL ASSISTANT: Assist with weekday programs for seniors and disabled adults."
+    = label :volunteer_form, :recreational_assistant, "RECREATIONAL ASSISTANT: Assist with weekday programs for seniors and disabled adults."
 
   .form-group
     = check_box_tag :volunteer, 'recreational_leader'
-    = label :volunteer, :recreational_leader, "RECREATIONAL LEADER: Design and conduct classes in your area of expertise (where there is interest) and/or provide backup to teachers, ed/rec classes, etc.."
+    = label :volunteer_form, :recreational_leader, "RECREATIONAL LEADER: Design and conduct classes in your area of expertise (where there is interest) and/or provide backup to teachers, ed/rec classes, etc.."
   
   .form-group
     = check_box_tag :volunteer, 'computer_lab'
-    = label :volunteer, :computer_lab, "COMPUTER LAB: Tutor or lead a small class for beginners or intermediate students such as Word, setting up an email account, searching the Internet, or creating flyers."
+    = label :volunteer_form, :computer_lab, "COMPUTER LAB: Tutor or lead a small class for beginners or intermediate students" 
+    = label :volunteer_form, :computer_lab_2, "(Word, setting up an email account, searching the Internet, or creating flyers)."
 
   .form-group
     = check_box_tag :volunteer, 'brown_bag'
-    = label :volunteer, :brown_bag, "BROWN BAG: The San Francisco Food Bank deliveries fresh produce every other Thursday. Volunteers bag the food for homebound clients.  Delivery must occur the same day at around 10:00 a.m."
+    = label :volunteer_form, :brown_bag, "BROWN BAG: The San Francisco Food Bank deliveries fresh produce every other Thursday. Volunteers bag the food for homebound clients."
+    = label :volunteer_form, :brown_bag_2, "Delivery must occur the same day at around 10:00 a.m."
     
   .form-group
     = check_box_tag :volunteer, 'food_box'
-    = label :volunteer, :food_box, "FOOD BOX: We deliver Supplemental Food Boxes weighing about 10 pounds to homebound seniors the first Tuesday of the Month."
+    = label :volunteer_form, :food_box, "FOOD BOX: We deliver Supplemental Food Boxes weighing about 10 pounds to homebound seniors the first Tuesday of the Month."
 
   .form-group
     = check_box_tag :volunteer, 'food_distribution'
-    = label :volunteer, :food_distribution, "FOOD DISTRIBUTION: Set-up food pantry line; distribute food."
+    = label :volunteer_form, :food_distribution, "FOOD DISTRIBUTION: Set-up food pantry line; distribute food."
 
   .form-group
     = check_box_tag :volunteer, 'friendly_visitor'
-    = label :volunteer, :friendly_visitor, "FRIENDLY VISITOR: Provide companionship to a senior by visiting them in their home for socializing, playing games, or taking a walk.  Requires a once a week visit for one hour for a commitment of at least six months."
+    = label :volunteer_form, :friendly_visitor, "FRIENDLY VISITOR: Provide companionship to a senior by visiting them in their home for socializing, playing games, or taking a walk." 
+    = label :volunteer_form, :friendly_visitor_2, "Requires a once a week visit for one hour for a commitment of at least six months."
 
   .form-group
     = check_box_tag :volunteer, 'sales_associate' 
-    = label :volunteer, :sales_associate, "SALES ASSOCIATES: Sell merchandise that directly benefits BHNC Programs. Help keep store neat and orderly."
+    = label :volunteer_form, :sales_associate, "SALES ASSOCIATES: Sell merchandise that directly benefits BHNC Programs. Help keep store neat and orderly."
 
   .form-group
     = check_box_tag :volunteer, 'sorters'
-    = label :volunteer, :sorters, "SORTERS: Organize the donations and the store to increase the sales."
+    = label :volunteer_form, :sorters, "SORTERS: Organize the donations and the store to increase the sales."
 
   .form-group
     = check_box_tag :volunteer, 'handyperson'
-    = label :volunteer, :handyperson, "HANDYPERSON: Change light bulbs, install smoke alarms or help with yard clean up for an elderly person or disabled adult."  
+    = label :volunteer_form, :handyperson, "HANDYPERSON: Change light bulbs, install smoke alarms or help with yard clean up for an elderly person or disabled adult."  
 
   .form-group
     = check_box_tag :volunteer, 'intern'
-    = label :volunteer, :intern, "INTERN: Work as a Program Assistant in your area of interest to gain valuable work experience or possible college credit."
+    = label :volunteer_form, :intern, "INTERN: Work as a Program Assistant in your area of interest to gain valuable work experience or possible college credit."
 
   .form-group
     = check_box_tag :volunteer, 'lunch_service'
-    = label :volunteer, :lunch_service, "LUNCH SERVICE: Assist in portioning out food and serving food to seniors in our Congregate lunch program. Light duty cleanup afterward."
+    = label :volunteer_form, :lunch_service, "LUNCH SERVICE: Assist in portioning out food and serving food to seniors in our Congregate lunch program. Light duty cleanup afterward."
 
   .form-group
     = check_box_tag :volunteer, 'personal_driver'
-    = label :volunteer, :personal_driver, "ON CALL PERSONAL DRIVERS: Assist seniors by escorting them to doctor’s appointments, grocery shopping trips, and errands."  
+    = label :volunteer_form, :personal_driver, "ON CALL PERSONAL DRIVERS: Assist seniors by escorting them to doctor’s appointments, grocery shopping trips, and errands."  
 
   .form-group
     = check_box_tag :volunteer, 'translator'
-    = label :volunteer, :translator, "TRANSLATORS: Translate documents and flyers for programs or verbally translate as needed."
+    = label :volunteer_form, :translator, "TRANSLATORS: Translate documents and flyers for programs or verbally translate as needed."
 
   .form-group
-    = label :volunteer, :other_interests, "OTHER (separate your interests with commas):"
+    = label :volunteer_form, :other_interests, "OTHER (separate your interests with commas):"
     = text_field :volunteer, 'other_interests', :required => false
 
   %h2 References
 
+  %h3 Please list the names and complete addresses of two people (other than relatives) who have known you for at least two years:
+
+  %h4 Professional Reference:
+
+  .form-group
+    = label :volunteer_form, :professional_name, 'Name'
+    %br
+    = text_field :volunteer, 'professional_name', :required => true
+
+  .form-group
+    = label :volunteer_form, :professional_relationship, 'Relationship'
+    %br
+    = text_field :volunteer, 'professional_relationship', :required => true
+
+  .form-group
+    = label :volunteer_form, :professional_phone, 'Phone #'
+    %br
+    = text_field :volunteer, 'professional_phone', :required => true
+
+  %h4 Personal Reference:
+
+  .form-group
+    = label :volunteer_form, :personal_name, 'Name'
+    %br
+    = text_field :volunteer, 'personal_name', :required => true
+
+  .form-group
+    = label :volunteer_form, :personal_relationship, 'Relationship'
+    %br
+    = text_field :volunteer, 'personal_relationship', :required => true
+
+  .form-group
+    = label :volunteer_form, :personal_phone, 'Phone #'
+    %br
+    = text_field :volunteer, 'personal_phone', :required => true
+
+  %h2 Volunteer Agreement
+
+  %h4 I understand that the Bernal Heights Neighborhood Center may check my references and/or criminal history record as part of their screening process.  To the best of my knowledge the above information is correct.  I also understand that certain information about me will be discussed with the client(s) with whom I may work.  If there are facts about myself I do not want repeated, it is my responsibility to discuss them with the Volunteer Coordinator.
+
+  .form-group
+    = label :volunteer_form, :time_commitment, 'I hereby commit my time and energies to Bernal Heights Neighborhood Center as a volunteer for a minimum of: '
+    = text_field :volunteer, 'time_commitment', :required => true
+
+  %h4 I further agree to maintain strict confidentiality in respecting the privacy rights of all direct and indirect participants with the Bernal Heights Neighborhood Center.
+
+  .form-group
+    = label :volunteer_form, :signature, 'Signature:'
+    = text_field :volunteer, 'signature', :required => true
 
   .form-group
     = submit_tag 'Sign Up'
