@@ -1,9 +1,11 @@
 class SpaceRentalRequest < ActiveRecord::Base
+  extend SimpleCalendar
   belongs_to :user
   validates_presence_of :location
   validates_presence_of :start
   validates_presence_of :end
   validate :start_time_must_be_earlier_than_end_time
+  has_calendar
 
   # Update later once we get list of spaces to rent
   def self.allLocations

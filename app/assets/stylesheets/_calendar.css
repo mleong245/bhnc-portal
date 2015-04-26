@@ -62,10 +62,14 @@
 }
 
 #calendar.day-schedule {
-  height: 300px;
+  height: 400px;
   overflow: auto;
 }
 
 #calendar .highlite {
   background-color: #E67373;
+}
+
+#calendar.day-schedule td {
+  height: 40px;
 }
