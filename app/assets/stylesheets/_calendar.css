@@ -65,6 +65,12 @@
   display: none;
 }
 
-#date-picker select{
+#submit {
+  height: 18px;
+  font-size: 12px;
+}
+
+#date-picker select {
   float: left;
+  height: 25px;
 }

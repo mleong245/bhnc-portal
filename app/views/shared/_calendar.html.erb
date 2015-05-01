@@ -10,11 +10,12 @@
     <%= form_tag('/start_date') do %>
       <span id="date-picker">
         <%= date_select 'calendar', 'date', :discard_day => true, :order => [:month, :year], default: @theDate.to_date %>
-        <div><%= submit_tag 'Submit' %></div>
+        <div><%= submit_tag 'Submit', :id => "submit" %></div>
       </span>
       
     <% end -%>
-    
+
+      <%= @date_display %>
       <%= month_calendar events: @events do |date, event, info| %>
         <%= date.day %>
 
