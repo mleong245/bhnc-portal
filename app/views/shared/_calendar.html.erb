@@ -9,7 +9,7 @@
     <div id="calendar">
     <%= form_tag('/start_date') do %>
       <span>
-        <%= date_select 'calendar', 'date', default: @theDate.to_date %>
+        <%= date_select 'calendar', 'date', :discard_day => true, :order => [:month, :year], default: @theDate.to_date %>
       </span>
       <div><%= submit_tag 'Submit' %></div>
     <% end -%>

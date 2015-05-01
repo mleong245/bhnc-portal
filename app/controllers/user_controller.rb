@@ -9,7 +9,8 @@ class UserController < ApplicationController
   end
 
   def start_date
-    date = params[:calendar]["date(1i)"] + "-" + params[:calendar]["date(2i)"] + "-" + params[:calendar]["date(3i)"]
+    #date = params[:calendar]["date(1i)"] + "-" + params[:calendar]["date(2i)"] + "-" + params[:calendar]["date(3i)"]
+    date = params[:calendar]["date(1i)"] + "-" + params[:calendar]["date(2i)"] + "-" + "1"
     params[:the_date] = date
     redirect_to "/?start_date=#{date}"
   end
