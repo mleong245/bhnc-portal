@@ -11,9 +11,15 @@ class User < ActiveRecord::Base
   validates_formatting_of :email, :using => :email
   has_many :space_rental_requests, :dependent => :nullify
 
+  after_create :send_confirmation_email
+
   def available?(day, time)
     hour = AvailableHour.where(:day_of_week => day, :start => time)
     self.available_hours.include?(hour.first)
+  end
+
+  def send_confirmation_email
+    ConfirmationMailer.user_created(self).deliver
   end
 
 end
