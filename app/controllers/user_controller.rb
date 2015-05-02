@@ -1,6 +1,10 @@
 class UserController < ApplicationController
   def show
-    @events = Event.upcoming
+    @events = Event.upcoming.limit(15)
+    @space_rental_locations = SpaceRentalRequest.allLocations
+    @space_rental_requests = {}
+    @space_rental_locations.each do |location|
+        @space_rental_requests[location] = SpaceRentalRequest.where(:location => location, :approved => true)
     if params[:start_date]
       @theDate = params[:start_date]
       @date_display = Date::MONTHNAMES[session[:month].to_i].to_s + " " + session[:year]
