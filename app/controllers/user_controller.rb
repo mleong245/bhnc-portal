@@ -5,6 +5,7 @@ class UserController < ApplicationController
     @space_rental_requests = {}
     @space_rental_locations.each do |location|
         @space_rental_requests[location] = SpaceRentalRequest.where(:location => location, :approved => true)
+    end
     if params[:start_date]
       @theDate = params[:start_date]
       @date_display = Date::MONTHNAMES[session[:month].to_i].to_s + " " + session[:year]
