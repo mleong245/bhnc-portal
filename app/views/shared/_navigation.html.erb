@@ -1,6 +1,6 @@
 <!-- app/views/shared/_navigation.html.erb -->
 
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">BHNC Portal</a>
@@ -8,10 +8,18 @@
     <ul class="nav navbar-nav navbar-right">
       <% if user_signed_in? %>
         <% if current_user.admin %>
-         <li><%= link_to 'ADMIN DASH', rails_admin_path %></li>
+         <li><%= link_to 'Admin Dashboard', rails_admin_path %></li>
         <% end %>
-        <li><%= link_to current_user.email, edit_user_registration_path(current_user) %></li>
-        <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to 'Volunteer', (current_user.volunteer or current_user.admin) ? edit_available_hours_path : user_new_volunteer_path %></li>
+        <li><%= link_to 'Space Rentals', new_space_rental_request_path %></li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+            <li><a href="#"><%= link_to 'Edit Profile', edit_user_registration_path(current_user) %></a></li>
+            <li><a href="#"><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></a></li>
+          </ul>
+        </li>
       <% else %>
         <li><%= link_to 'Sign in', new_user_session_path %></li>
         <li><%= link_to 'Sign up', new_user_registration_path %></li>

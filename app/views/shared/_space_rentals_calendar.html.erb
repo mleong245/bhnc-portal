@@ -1,0 +1,43 @@
+<!-- app/views/shared/_space_rental_calendar.html.erb -->
+<body>
+    <h1>Spaces being rented out</h1>
+    <ul class="nav nav-tabs">
+        <% @space_rental_locations.each do |location| %>
+            <li><a href="#<%= location.gsub ' ', '_' %>" data-toggle="tab"><%= location %></a></li>
+        <% end %>
+    </ul>
+    <div id="tab-content" class="tab-content">
+        <% @space_rental_locations.each do |location| %>
+            <% active = @space_rental_locations[0] == location ? "active" : "" %>
+            <div class="tab-pane <%= active %>" id="<%= location.gsub ' ', '_' %>">
+                <div id="calendar" class="day-schedule">
+                    <%= week_calendar events: @space_rental_requests[location] do |date, rentals, info| %>
+                        <%= date.day %>
+
+                        <% start = date.beginning_of_day.advance(:hours => 8) %>
+                        <% ending = start.advance(:hours => 12) %>
+                        <table>
+                        <% while start < ending do %>
+                            <tr>
+                            <% highlite = SpaceRentalRequest.highlight?(rentals, start) ? "highlite" : "" %>
+                                <td class="<%= highlite %>">
+                                    <div class="day-hour">
+                                        <%= start.strftime("%I:%M %p") %>
+                                        <% rentals.each do |rental|%>
+                                            <% if rental.display_name?(start) %>
+                                                <a data-toggle="tooltip" title="<%= rental.description%>"><%= rental.first_and_last_initial %></a>
+                                            <% end %>
+                                        <% end %>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <% start += 0.5.hours %>
+                        <% end %>
+                        </table>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</body>

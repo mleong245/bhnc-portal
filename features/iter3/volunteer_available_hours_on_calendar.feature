@@ -3,15 +3,15 @@ Feature: Show Available Hours as a volunteer
   In order to be noticed for future events
   I want to show my available hours to the admin
 
-  Scenario: Go to the Edit Available Hours page
-    Given I am on the landing page
-    Then I should be able to edit my available hours
+Background:
+  Given I am an authenticated volunteer with email "foo@gmail.com" and password "12345678"
+  And I am on the edit hours page
 
-  Scenario: When I am on the edit hours page
-    Given I am on the edit hours page
-    Then I should see the calendar
-    And I should not see "Sign up as a volunteer"
+Scenario: I add my available hours
+  When I select "Wednesday, 8:00AM"
+  Then I should be signed up to be available on Wednesday at 8:00AM
 
-  Scenario: What should I see on the calendar
-    Given I am on the edit hours page
-    Then I should see the appropriate info in the calendar
+Scenario: I change my hours
+  Given I have already signed up for Wednesday at 8:00AM
+  When I select "Wednesday, 8:00AM"
+  Then I should not be signed up to be available on Wednesday at 8:00AM

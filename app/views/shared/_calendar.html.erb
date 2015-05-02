@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/calendar.css">
 </head>
 <body>
-
+    <h3>Calendar</h3>
     <div id="calendar">
     <%= form_tag('/start_date') do %>
       <span id="date-picker">
@@ -21,7 +21,7 @@
 
         <% event.each do |events| %>
           <div>
-            <%= events.name %>
+            <%=link_to events.name[0..10], event_detail_path(event) %>
           </div>
         <% end %>
       <% end %>

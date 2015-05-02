@@ -1,13 +1,13 @@
 -# This file is app/views/user/show.html.haml
 %h1 Welcome to the BHNC Website
 
-= render 'shared/upcoming_events'
 
-= render 'shared/calendar'
+.col-md-5
+  = render 'shared/upcoming_events'
 
-=link_to "Volunteer Sign Up", user_new_volunteer_path
+.col-md-7
+  = render 'shared/calendar'
 
+%br
 
-=link_to "Sign out", destroy_user_session_path, :method => :delete
-
-=link_to "Request a space rental", new_space_rental_request_path
+= render 'shared/space_rentals_calendar'

@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402071924) do
+ActiveRecord::Schema.define(version: 20150417210119) do
+
+  create_table "available_hours", force: :cascade do |t|
+    t.string "day_of_week"
+    t.string "start"
+    t.string "end"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -33,6 +39,11 @@ ActiveRecord::Schema.define(version: 20150402071924) do
   end
 
   add_index "space_rental_requests", ["user_id"], name: "index_space_rental_requests_on_user_id"
+
+  create_table "user_hours", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "available_hour_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                            default: "",    null: false
@@ -64,6 +75,19 @@ ActiveRecord::Schema.define(version: 20150402071924) do
   create_table "users_events", id: false, force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
+  end
+
+  create_table "volunteer_applications", force: :cascade do |t|
+    t.integer  "user_id",                        null: false
+    t.string   "name",                           null: false
+    t.boolean  "approved",       default: false, null: false
+    t.string   "street_address",                 null: false
+    t.string   "city",                           null: false
+    t.string   "zip_code",                       null: false
+    t.string   "phone",                          null: false
+    t.string   "company",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
 end

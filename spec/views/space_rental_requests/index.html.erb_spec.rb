@@ -4,10 +4,14 @@ describe "space_rental_requests/index" do
   before(:each) do
     assign(:space_rental_requests, [
       stub_model(SpaceRentalRequest,
-        :location => "Location"
+        :location => "Location",
+        :start => DateTime.now,
+        :end => DateTime.now
       ),
       stub_model(SpaceRentalRequest,
-        :location => "Location"
+        :location => "Location",
+        :start => DateTime.now,
+        :end => DateTime.now
       )
     ])
   end

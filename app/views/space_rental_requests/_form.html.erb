@@ -17,16 +17,74 @@
   </div>
   <div class="field">
     <%= f.label :start %><br>
-    <%= f.datetime_select :start, :ampm => true%>
+    <%= f.datetime_select :start, :start_hour => 8, :end_hour => 20, :ampm => true %>
   </div>
   <div class="field">
     <%= f.label :end %><br>
-    <%= f.datetime_select :end, :ampm => true%>
+    <%= f.datetime_select :end, :start_hour => 8, :end_hour => 20, :ampm => true %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_area :description %>
   </div>
+  <h3>Hourly Rates</h3>
+  BHNC downstairs multipurpose room or ECC
+  <ul>
+    <li> Private event: $80 </li>
+    <li> Nonprofit/Bernal Heights/Excelsior neighborhood group: $65 </li>
+    <li> BHNC member rate (group or individual): $65 </li>
+  </ul>
+  BHNC conference room
+  <ul>
+    <li> Private event: $65 </li>
+    <li> Nonprofit/Bernal Heights/Excelsior neighborhood group: $50 </li>
+    <li> BHNC member rate (group or individual): $50 </li>
+  </ul>
+
+  Above rates INCLUDE $25 per hour front-desk clerk for rentals outside of regular business
+  hours.
+  <br>
+  $200 deposit required for all events; refundable subject to terms and limitations listed below.
+  <br>
+  Special rates may be available for daily, weekly, or monthly use.
+
+  <h3>By submitting this request, you are agreeing to the following terms and limitations:</h3>
+  <h5>USAGE OF Bernal Heights Neighborhood Center (BHNC) spaces, including BHNC's
+  Excelsior Community Center (ECC):</h5>
+  <ul>
+    <li> Use of alcohol or illegal drugs is not permitted. </li>
+    <li> Smoking in NOT ALLOWED at BHNC at ANY TIME. Smoking is prohibited by San
+      Francisco’s Health Code: Ordinance 300-88. </li>
+    <li> Helium-filled balloons NOT allowed. Balloons left behind will cause deposit to be retained. </li>
+    <li> The piano is not to be moved for any reason. </li>
+    <li> Use of kitchen limited to sink. Use of stove and refrigerator is NOT permitted. </li>
+    <li> Unless authorized by the Executive Director, all events must end by 8:00 pm. </li>
+  </ul>
+  <h5>UPON COMPLETION OF YOUR USAGE:</h5>
+  <ul>
+    <li>Tables, floors, chairs and equipment must be left clean and returned to their original
+      location. </li>
+    <li> All decorations and signs must be taken down and all tape and pins removed from walls,
+      etc. </li>
+    <li> All windows must be fully closed and securely bolted. Turn off ceiling fans and/or heat. </li>
+    <li> All lights at BHNC including the bathrooms (except for lobby lights) must be turned off. </li>
+    <li> All trash should be neatly bagged and placed in black bin in the patio area. Recyclable and
+      compostable materials should be properly sorted and placed in appropriate bins (blue for 
+      recycling and green for composting) </li>
+    <li> Ending time indicated in the contract is the time when you and your group will leave BHNC. </li>
+    <li> Deposit will be held if needed to pay for lack of compliance with terms and limitations or for
+      any damage to the property. </li>
+  </ul>
+  <h5>False Alarms:</h5>
+  <ul>
+    <li> A $150 resetting fee plus any expenses BHNC may incur due to a false alarm will be deducted from your deposit for setting off false alarms or abusing the fire safety equipment 
+      (fire extinguishers, fire hoses, etc.)
+  </ul>
+  <h5>Emergency Contact Number:</h5>
+  <ul>
+    <li> 415 509-8269 or 415 254-9422 </li>
+    <li> Please use only for emergencies. </li>
+  </ul>
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,0 +1,28 @@
+<!-- app/views/shared/_space_rental_calendar.html.erb -->
+<body>
+    <h1>Edit your available hours</h1>
+    <%= form_for :available_hours do |f| %>
+    <table class="table table-bordered table-condensed ">
+      <tr>
+        <% AvailableHour.days.each do |day| %>
+          <th><%= day %></th>
+        <% end %>
+      </tr>
+      <% AvailableHour.start_times.each do |time| %>
+        <tr>
+          <% AvailableHour.days.each do |day| %>
+            <% day_time = day + ", " + time %>
+            <td>
+              <%= f.label time %>
+              <br />
+              <%= f.check_box day_time, :checked => current_user.available?(day, time)%>
+            </td>
+          <% end %>
+        </tr>
+      <% end %>
+    </table>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+    <% end %>
+</body>

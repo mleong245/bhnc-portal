@@ -36,8 +36,10 @@ describe SpaceRentalRequestsController do
   end
 
   describe "GET index" do
-    it "assigns all space_rental_requests as @space_rental_requests" do
+    it "assigns owned space_rental_requests as @space_rental_requests" do
       space_rental_request = SpaceRentalRequest.create! valid_attributes
+      space_rental_request.user = @user
+      @user.space_rental_requests << space_rental_request
       get :index, {}, valid_session
       assigns(:space_rental_requests).should eq([space_rental_request])
     end

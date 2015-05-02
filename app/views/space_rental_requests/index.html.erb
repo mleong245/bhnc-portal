@@ -1,6 +1,6 @@
-<h1>Listing Space Rental Requests</h1>
+<h1>Listing Your Space Rental Requests</h1>
 
-<table>
+<table class="table table-condensed table-hover">
   <thead>
     <tr>
       <th>Location</th>
@@ -14,11 +14,11 @@
     <% @space_rental_requests.each do |space_rental_request| %>
       <tr>
         <td><%= space_rental_request.location %></td>
-        <td><%= space_rental_request.start %></td>
-        <td><%= space_rental_request.end %></td>
-        <td><%= link_to 'Show', space_rental_request %></td>
-        <td><%= link_to 'Edit', edit_space_rental_request_path(space_rental_request) %></td>
-        <td><%= link_to 'Destroy', space_rental_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= space_rental_request.display_time(space_rental_request.start) %></td>
+        <td><%= space_rental_request.display_time(space_rental_request.end) %></td>
+        <td><%= link_to 'Show Details', space_rental_request %></td>
+        <td><%= link_to 'Edit Rental Request', edit_space_rental_request_path(space_rental_request) %></td>
+        <td><%= link_to 'Delete Rental Request', space_rental_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
