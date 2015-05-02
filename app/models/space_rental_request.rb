@@ -1,6 +1,6 @@
 class SpaceRentalRequest < ActiveRecord::Base
   extend SimpleCalendar
-  after_save :send_confirmation_email
+  after_update :send_confirmation_email
   after_destroy :send_rejection_email
   belongs_to :user
   validates_presence_of :location
