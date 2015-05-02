@@ -1,5 +1,7 @@
 class SpaceRentalRequest < ActiveRecord::Base
   extend SimpleCalendar
+  after_update :send_confirmation_email
+  after_destroy :send_rejection_email
   belongs_to :user
   validates_presence_of :location
   validates_presence_of :start
@@ -59,5 +61,15 @@ class SpaceRentalRequest < ActiveRecord::Base
 
   def display_time(time)
     return time.strftime('%m/%d/%Y %l:%M %p')
+  end
+
+  def send_confirmation_email
+    if self.approved
+      ConfirmationMailer.rental_approved(self.user).deliver
+    end
+  end
+
+  def send_rejection_email
+    ConfirmationMailer.rental_denied(self.user).deliver
   end
 end

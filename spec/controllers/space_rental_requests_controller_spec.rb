@@ -95,7 +95,7 @@ describe SpaceRentalRequestsController do
           post :create, {:space_rental_request => valid_attributes}, valid_session
         }.to change(SpaceRentalRequest, :count).by(0)
       end
-      
+
       it "assigns a newly created but unsaved space_rental_request as @space_rental_request" do
         # Trigger the behavior that occurs when invalid params are submitted
         SpaceRentalRequest.any_instance.stub(:save).and_return(false)
@@ -158,14 +158,14 @@ describe SpaceRentalRequestsController do
 
   describe "DELETE destroy" do
     it "destroys the requested space_rental_request" do
-      space_rental_request = SpaceRentalRequest.create! valid_attributes
+      space_rental_request = @user.space_rental_requests.create! valid_attributes
       expect {
         delete :destroy, {:id => space_rental_request.to_param}, valid_session
       }.to change(SpaceRentalRequest, :count).by(-1)
     end
 
     it "redirects to the space_rental_requests list" do
-      space_rental_request = SpaceRentalRequest.create! valid_attributes
+      space_rental_request = @user.space_rental_requests.create! valid_attributes
       delete :destroy, {:id => space_rental_request.to_param}, valid_session
       response.should redirect_to(space_rental_requests_url)
     end

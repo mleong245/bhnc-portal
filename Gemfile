@@ -28,6 +28,7 @@ gem 'haml'
 gem 'devise'
 gem 'rake'
 gem 'rails_admin'
+gem 'figaro'
 gem 'cancan'
 
 gem "watu_table_builder", :require => "table_builder"
