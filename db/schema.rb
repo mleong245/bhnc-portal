@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417210119) do
+ActiveRecord::Schema.define(version: 20150426022950) do
 
   create_table "available_hours", force: :cascade do |t|
     t.string "day_of_week"
@@ -46,27 +46,74 @@ ActiveRecord::Schema.define(version: 20150417210119) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                            default: "",    null: false
-    t.string   "encrypted_password",               default: "",    null: false
+    t.string   "email",                                  default: "",    null: false
+    t.string   "encrypted_password",                     default: "",    null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                    default: 0,     null: false
+    t.integer  "sign_in_count",                          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "admin",                            default: false, null: false
-    t.boolean  "volunteer",                        default: false, null: false
+    t.boolean  "admin",                                  default: false, null: false
+    t.boolean  "volunteer",                              default: false, null: false
     t.string   "street_address"
     t.string   "city"
     t.integer  "zip_code"
     t.string   "company"
-    t.integer  "phone",                  limit: 8
+    t.integer  "phone",                        limit: 8
+    t.string   "date"
+    t.string   "emergency_contact"
+    t.string   "occupation"
+    t.string   "employer"
+    t.string   "work"
+    t.string   "current"
+    t.string   "past"
+    t.integer  "emergency_phone_number",       limit: 8
+    t.string   "referral"
+    t.string   "languages"
+    t.string   "extra_information"
+    t.string   "license_number"
+    t.string   "auto_insurance_policy_number"
+    t.string   "other_interests"
+    t.string   "professional_name"
+    t.string   "professional_relationship"
+    t.integer  "professional_phone",           limit: 8
+    t.string   "personal_name"
+    t.string   "personal_relationship"
+    t.integer  "personal_phone",               limit: 8
+    t.string   "time_commitment"
+    t.string   "signature"
+    t.string   "criminal_offense_explanation"
+    t.date     "the_date"
+    t.string   "birth_date"
+    t.boolean  "contact_during_work_hours",              default: false, null: false
+    t.boolean  "photograph_consent",                     default: false, null: false
+    t.boolean  "criminal_offense",                       default: false, null: false
+    t.boolean  "license_check",                          default: false, null: false
+    t.boolean  "violations_check",                       default: false, null: false
+    t.boolean  "car_check",                              default: false, null: false
+    t.boolean  "class_b_license",                        default: false, null: false
+    t.boolean  "administrative",                         default: false, null: false
+    t.boolean  "recreational_assistant",                 default: false, null: false
+    t.boolean  "recreational_leader",                    default: false, null: false
+    t.boolean  "computer_lab",                           default: false, null: false
+    t.boolean  "brown_bag",                              default: false, null: false
+    t.boolean  "food_box",                               default: false, null: false
+    t.boolean  "food_distribution",                      default: false, null: false
+    t.boolean  "friendly_visitor",                       default: false, null: false
+    t.boolean  "sales_associate",                        default: false, null: false
+    t.boolean  "sorters",                                default: false, null: false
+    t.boolean  "handyperson",                            default: false, null: false
+    t.boolean  "intern",                                 default: false, null: false
+    t.boolean  "lunch_service",                          default: false, null: false
+    t.boolean  "personal_driver",                        default: false, null: false
+    t.boolean  "translator",                             default: false, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
